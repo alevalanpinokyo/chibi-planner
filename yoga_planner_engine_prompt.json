@@ -1,0 +1,26 @@
+{
+  "prompt_title": "NON-DESTRUCTIVE SYSTEM ENGINE INTEGRATION PROMPT",
+  "target_domain": "Yoga Planner / Any Custom Planner HTML Skeleton",
+  "instruction_for_ai": "You are integrating state management, auto-save, multi-document archiving, export/import, and print rules into a host HTML template. You MUST strictly separate LOGIC from VISUAL STYLING.",
+  "strict_rules": [
+    "RULE 1: DO NOT CHANGE HOST CSS / THEME / COLORS / FONTS. Retain all existing :root variables, background colors, fonts, borders, and visual styles of the host template completely untouched.",
+    "RULE 2: DO NOT ALTER HOST CONTENT / EMOJIS / DOMAIN TEXT. Do NOT inject Chibi mascots, Sakura emojis, or Chibi titles. Retain the host template's Yoga theme, poses, Namaste copy, and icons.",
+    "RULE 3: BINDING ONLY VIA data-key ATTRIBUTES. Attach data-key='...' attributes to host editable elements (<input>, <textarea>, [contenteditable], checkbox) without altering their HTML layout or class names.",
+    "RULE 4: ADD ONLY THE JS LOGIC ENGINE. Inject the 800ms debounced auto-save engine, multi-document activeWeekId tracking, JSON/CSV export/import, and versioning logic in JavaScript.",
+    "RULE 5: MINIMAL TOOLBAR ENCRYPTION. Integrate a toolbar that inherits the host page's visual styling variables (--primary, --card, --border) rather than hardcoded Chibi colors."
+  ],
+  "engine_architecture": {
+    "data_binding": "document.querySelectorAll('[data-key]')",
+    "storage_keys": {
+      "live_key": "yoga-planner:live",
+      "archive_key": "yoga-planner:archive",
+      "active_id_key": "yoga-planner:activeId",
+      "version_key": "yoga-planner:version"
+    },
+    "auto_save_debounce_ms": 800,
+    "default_document_name_pattern": "Yoga Haftası (DD MMM YYYY)",
+    "export_format_json": "Includes appVersion, version=2, exportedAt, activeWeekId, current, archive",
+    "export_format_csv": "Includes UTF-8 BOM (\\ufeff), metadata header (Document_Name, Exported_At), escaped key-value rows",
+    "print_css_rules": "@media print { @page { size: portrait; margin: 8mm; } .page, .daily-page, .yoga-card { break-after: page; page-break-after: always; break-inside: avoid; height: 98vh; max-height: 98vh; overflow: hidden; } }"
+  }
+}
