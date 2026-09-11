@@ -1,0 +1,1458 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover"/><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><title>Chibi Kawaii Planner</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/><style>:root{color-scheme:light;--primary:hsl(340 80% 72%);--accent:hsl(190 75% 70%);--bg:hsl(345 60% 98%);--fg:hsl(330 25% 22%);--muted:hsl(330 10% 55%);--border:hsl(340 40% 90%);--card:hsl(0 0% 100%);--font-h:'Quicksand',-apple-system,sans-serif;--font-b:'Nunito',-apple-system,sans-serif;}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:var(--font-b);line-height:1.5;overflow-x:hidden}h1,h2,h3,h4,.kicker,.cover-year{font-family:var(--font-h);letter-spacing:.01em}.page{position:relative;overflow:hidden}.page-deco{position:absolute;inset:0;pointer-events:none;z-index:0}.page > *:not(.page-deco):not(.cover-bg-art){position:relative;z-index:1}.ornament-divider{display:flex;justify-content:center;margin:14px 0 18px;color:var(--accent);opacity:.7}.divider-svg{width:240px;height:16px}.cover-divider{margin:8px auto 18px}.cover-bg-art{position:absolute;top:-40px;right:-40px;width:280px;height:280px;color:var(--primary);opacity:.22;pointer-events:none;z-index:0}.cover-bg-art .hero-art{width:100%;height:100%}html,body{background:radial-gradient(1200px 800px at 10% -10%,color-mix(in srgb,var(--primary) 8%,transparent),transparent 60%),radial-gradient(900px 700px at 110% 110%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 60%),var(--bg) !important}
+.toolbar{position:sticky;top:0;z-index:50;display:flex;gap:6px;align-items:center;padding:8px 12px;background:var(--card);border-bottom:1px solid var(--border);flex-wrap:wrap;overflow-x:auto}.toolbar h1{font-size:13px;margin:0;flex:1;font-weight:700;min-width:140px;white-space:nowrap}.toolbar button,.toolbar label.btn{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--fg);cursor:pointer;font-size:11px;font-weight:600;white-space:nowrap;font-family:inherit}.toolbar button.primary{background:var(--primary);color:white;border-color:var(--primary)}.toolbar .saved{font-size:10px;color:var(--muted);white-space:nowrap}
+main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);border-radius:16px;padding:28px;margin:16px 0;border:1px solid var(--border);page-break-after:always;min-height:80vh}.cover{text-align:center;background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 12%,var(--card)),var(--card))}.cover-inner{padding:40px 24px}.kicker{display:inline-block;padding:4px 14px;border-radius:999px;background:color-mix(in srgb,var(--primary) 15%,transparent);color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.cover h1{font-size:clamp(32px,7vw,72px);margin:18px 0 8px;line-height:1.05;outline:none}.cover-tag{color:var(--muted);margin:18px auto 24px;max-width:520px;outline:none}.xp-bar{max-width:320px;height:14px;margin:12px auto;background:color-mix(in srgb,var(--primary) 12%,transparent);border-radius:999px;position:relative;overflow:hidden}.xp-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:999px}.xp-bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--fg)}.cover-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:32px}.cover-nav a{padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--border);color:var(--fg);font-size:12px;text-decoration:none;font-weight:600}.cover-nav a:hover{background:var(--primary);color:white;border-color:var(--primary)}
+.daily-page{background:var(--card);border-radius:16px;padding:24px;margin:16px 0;border:1px solid var(--border);page-break-after:always;position:relative;overflow:hidden}.daily-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:2px dashed var(--border);margin-bottom:18px;gap:8px;flex-wrap:wrap}.daily-header h2{margin:0;font-size:24px;display:flex;align-items:center;gap:10px}.chibi-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;background:color-mix(in srgb,var(--primary) 20%,var(--card));border:2px solid var(--primary);flex-shrink:0}.daily-date{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em}.daily-body{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}@media(max-width:750px){.daily-body{grid-template-columns:1fr}.daily-header h2{font-size:20px}.daily-page{padding:16px;margin:10px 0}}.daily-col{display:flex;flex-direction:column;gap:12px}.daily-box{border:1.5px solid var(--border);border-radius:14px;padding:12px;background:color-mix(in srgb,var(--primary) 3%,var(--card))}.daily-box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);font-weight:800;display:flex;align-items:center;gap:5px}.daily-box h4 .emoji{font-size:15px}.daily-box textarea{width:100%;min-height:70px;border:none;background:transparent;font:inherit;color:var(--fg);resize:vertical;outline:none;font-size:14px}.daily-box textarea::placeholder{color:var(--muted);font-style:italic}
+.priority-list{display:flex;flex-direction:column;gap:6px}.priority-item{display:flex;gap:8px;align-items:center;padding:6px 8px;background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:8px;flex-wrap:wrap}.priority-item .num{font-weight:800;color:var(--primary);font-size:14px;min-width:18px;flex-shrink:0}.priority-item input[type=checkbox]{accent-color:var(--primary);flex-shrink:0;width:16px;height:16px}.priority-item .txt{flex:1;outline:none;font-size:14px;min-height:18px;min-width:100px}.priority-item .txt:empty::before{content:attr(data-placeholder);color:var(--muted)}
+.hourly{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:11px}@media(max-width:500px){.hourly{grid-template-columns:1fr}}.hourly .hr{display:flex;gap:6px;align-items:center;padding:2px 0}.hourly .hr .time{font-weight:700;color:var(--primary);min-width:44px;flex-shrink:0;font-size:11px}.hourly .hr .line{flex:1;border-bottom:1px dotted var(--border);min-height:18px;outline:none;font-size:12px}
+.mood-row{display:flex;gap:6px;justify-content:space-between;margin:6px 0}.mood-row .mood{font-size:24px;cursor:pointer;padding:4px;border-radius:8px;transition:.15s;filter:grayscale(1);opacity:.5;user-select:none;line-height:1}.mood-row .mood:hover{transform:scale(1.15)}.mood-row .mood.active{filter:none;opacity:1;background:color-mix(in srgb,var(--primary) 15%,transparent);transform:scale(1.1)}
+.water-row{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}.water-row .glass{width:22px;height:28px;border:1.5px solid var(--accent);border-radius:0 0 8px 8px;cursor:pointer;transition:.15s;user-select:none}.water-row .glass.on{background:linear-gradient(180deg,transparent 20%,var(--accent) 20%)}
+.habit-mini{display:flex;flex-direction:column;gap:6px}.habit-mini .h-row{display:flex;align-items:center;gap:8px;font-size:12px;flex-wrap:wrap}.habit-mini .h-row .h-name{flex:1;outline:none;min-height:18px;min-width:80px;font-size:14px}.habit-mini .h-row .h-name:empty::before{content:attr(data-placeholder);color:var(--muted)}.habit-mini .pips .pip{width:14px;height:14px}
+.pips{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}.pip{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--primary);cursor:pointer;user-select:none}.pip.on{background:var(--primary)}
+.chibi-scene{display:flex;justify-content:center;align-items:center;padding:10px 0}.chibi-scene svg{width:110px;height:110px}@media(max-width:500px){.chibi-scene svg{width:90px;height:90px}}
+#artMenu{position:fixed !important;top:auto;right:16px;min-width:250px;max-width:calc(100vw - 32px);background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:8px;box-shadow:0 16px 40px rgba(0,0,0,.22);z-index:9999;display:none}#artMenu.show{display:block}#artMenu label{display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;font-size:13px;font-weight:600;color:var(--fg);border-radius:8px;transition:background .15s}#artMenu label:hover{background:color-mix(in srgb,var(--primary) 10%,transparent)}#artMenu label input[type=checkbox]{accent-color:var(--primary);width:16px;height:16px;flex-shrink:0}#artMenu .menu-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:6px 12px 4px}@media(max-width:500px){#artMenu{right:8px;left:8px;min-width:auto}}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px)}.modal-overlay.show{display:flex}.modal{background:var(--card);border-radius:16px;max-width:640px;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border)}.modal-h{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}.modal-h h2{margin:0;font-size:18px;color:var(--primary)}.modal-h button{background:transparent;border:none;font-size:22px;cursor:pointer;color:var(--muted);padding:0;line-height:1;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}.modal-h button:hover{background:color-mix(in srgb,var(--primary) 10%,transparent)}.modal-body{padding:16px 20px;overflow-y:auto;flex:1}.modal-body p.hint{color:var(--muted);font-size:12px;margin:0 0 12px;font-style:italic}.modal-f{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.modal-f button{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:12px;font-weight:600;font-family:inherit}.modal-f button.primary{background:var(--primary);color:white;border-color:var(--primary)}
+.archive-section-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);margin:18px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}.archive-section-title:first-child{margin-top:0}.archive-section-title.system{color:var(--muted)}.archive-section-title .count{font-weight:600;font-size:10px;opacity:.7;margin-left:4px}
+.archive-item{border:1.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px;background:color-mix(in srgb,var(--primary) 3%,var(--card));display:flex;flex-direction:column;gap:8px}.archive-item.system{background:color-mix(in srgb,var(--muted) 6%,var(--card));border-color:color-mix(in srgb,var(--muted) 25%,var(--border));opacity:.85}.archive-item.system .archive-item-name{color:var(--muted)}.archive-item-h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}.archive-item-name{font-weight:700;color:var(--fg);font-size:14px;word-break:break-word}.archive-item-meta{font-size:11px;color:var(--muted);margin-top:2px}.archive-item-actions{display:flex;gap:6px;flex-wrap:wrap}.archive-item-actions button{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:11px;font-weight:600;font-family:inherit;color:var(--fg)}.archive-item-actions button:hover{transform:translateY(-1px)}.archive-item-actions button.view{background:var(--accent);color:white;border-color:var(--accent)}.archive-item-actions button.restore{background:var(--primary);color:white;border-color:var(--primary)}.archive-item-actions button.danger{color:hsl(0 65% 50%);border-color:hsl(0 65% 80%)}.archive-empty{text-align:center;padding:40px 20px;color:var(--muted)}.archive-empty .big{font-size:48px;display:block;margin-bottom:10px}.clear-autosaves{margin-top:8px;padding:6px 12px;font-size:11px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-family:inherit;color:hsl(0 65% 50%)}
+/* ── View Modal ── */
+.view-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:10px}.view-tab{padding:5px 10px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:11px;font-weight:700;font-family:inherit;color:var(--fg);white-space:nowrap}.view-tab.active{background:var(--primary);color:white;border-color:var(--primary)}.view-day{display:none}.view-day.active{display:block}.view-box{border:1.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px;background:color-mix(in srgb,var(--primary) 3%,var(--card))}.view-box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);font-weight:800;display:flex;align-items:center;gap:5px}.view-box .value{font-size:13px;line-height:1.5;color:var(--fg);white-space:pre-wrap;word-break:break-word}.view-box .value.empty{color:var(--muted);font-style:italic;opacity:.6}.view-empty{text-align:center;padding:40px 20px;color:var(--muted);font-style:italic}.view-restore-bar{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.view-restore-bar .label{font-size:12px;color:var(--muted)}.view-restore-bar button{padding:8px 16px;border-radius:999px;border:1px solid var(--primary);background:var(--primary);color:white;cursor:pointer;font-size:12px;font-weight:700;font-family:inherit}
+@media print{
+  @page{size:portrait;margin:8mm;}
+  *{print-color-adjust:exact !important;-webkit-print-color-adjust:exact !important;}
+  html,body{background:white !important;margin:0 !important;padding:0 !important;width:100% !important;}
+  main{max-width:100% !important;margin:0 !important;padding:0 !important;}
+  .toolbar,.cover-nav,.modal-overlay,#artMenu{display:none !important;}
+  .page,.daily-page{margin:0 !important;padding:16px 20px !important;border:1.5px solid var(--border) !important;border-radius:12px !important;box-shadow:none !important;min-height:0 !important;height:98vh !important;max-height:98vh !important;page-break-after:always !important;break-after:page !important;page-break-inside:avoid !important;break-inside:avoid !important;box-sizing:border-box !important;overflow:hidden !important;}
+}
+@media(max-width:600px){
+  main{padding:8px;}
+  .toolbar{padding:6px 8px;gap:4px;}
+  .toolbar h1{font-size:12px;min-width:100px;}
+  .toolbar button,.toolbar label.btn{padding:5px 8px;font-size:10px;}
+  .page,.daily-page{padding:14px;border-radius:12px;margin:8px 0;}
+  .cover-inner{padding:24px 12px;}
+  .modal{max-height:92vh;border-radius:12px;}
+  .modal-h{padding:12px 14px;}
+  .modal-h h2{font-size:16px;}
+  .modal-body{padding:12px 14px;}
+  .modal-f{padding:10px 14px;}
+}
+</style></head>
+<body>
+
+<div class="toolbar">
+  <h1>🌸 Chibi Kawaii Planner</h1>
+  <span id="versionTag" style="background:var(--primary);color:white;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:0.05em;box-shadow:0 2px 6px rgba(0,0,0,0.1);display:inline-flex;align-items:center;gap:4px;">🏷️ v2.2.4</span>
+  <span id="activeWeekBadge" style="padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;border:1.5px solid var(--primary);background:color-mix(in srgb,var(--primary) 15%,var(--card));color:var(--primary);display:inline-flex;align-items:center;gap:4px;">📌 Live Week</span>
+  <span class="saved" id="savedTag">Auto-saves</span>
+  <span class="saved" id="backupTag" style="color:var(--muted)"></span>
+  <button id="btnNewWeek" class="primary" title="Create a new week document">📅 New Week</button>
+  <button id="btnArchive" title="View all weeks">📚 All Weeks</button>
+  <button id="btnArt" type="button">✦ Add art</button>
+  <button id="btnExport" class="primary">⬇ Export</button>
+  <button id="btnExportCsv">📊 CSV</button>
+  <label class="btn">⬆ Import<input id="btnImport" type="file" accept="application/json" hidden/></label>
+  <button id="btnPrint">🖨 Print</button>
+  <button id="btnClear">⚠ Clear</button>
+</div>
+
+<div id="artMenu"></div>
+
+<main>
+<!-- ══════════ COVER ══════════ -->
+<section id="cover" class="page cover">
+<div class="cover-bg-art" data-deco="moon" hidden>
+<svg class="hero-art" viewBox="0 0 200 200" aria-hidden="true">
+<defs><radialGradient id="moonG" cx="40%" cy="40%"><stop offset="0%" stop-color="currentColor" stop-opacity=".25"/><stop offset="100%" stop-color="currentColor" stop-opacity="0"/></radialGradient></defs>
+<circle cx="100" cy="100" r="70" fill="url(#moonG)"/>
+<path d="M115 50 a 55 55 0 1 0 35 90 a 45 45 0 1 1 -35 -90 z" fill="currentColor" opacity=".85"/>
+</svg></div>
+
+<div class="page-deco" data-deco="sakura" hidden style="opacity:.5">
+<svg viewBox="0 0 400 400" preserveAspectRatio="none" style="width:100%;height:100%">
+  <g fill="hsl(340 80% 80%)">
+    <ellipse cx="40" cy="60" rx="8" ry="4" transform="rotate(30 40 60)"/>
+    <ellipse cx="320" cy="120" rx="7" ry="3.5" transform="rotate(-20 320 120)"/>
+    <ellipse cx="120" cy="340" rx="9" ry="4.5" transform="rotate(45 120 340)"/>
+    <ellipse cx="280" cy="300" rx="6" ry="3" transform="rotate(15 280 300)"/>
+    <ellipse cx="200" cy="180" rx="7" ry="3.5" transform="rotate(-40 200 180)"/>
+    <ellipse cx="90" cy="220" rx="6" ry="3" transform="rotate(60 90 220)"/>
+    <ellipse cx="340" cy="250" rx="7" ry="3.5" transform="rotate(-15 340 250)"/>
+  </g>
+</svg>
+</div>
+<div class="page-deco" data-deco="sparkles" hidden style="opacity:.7">
+<svg viewBox="0 0 400 400" preserveAspectRatio="none" style="width:100%;height:100%">
+  <g fill="hsl(45 90% 65%)">
+    <path d="M60 80 L62 88 L70 90 L62 92 L60 100 L58 92 L50 90 L58 88 Z"/>
+    <path d="M340 60 L342 68 L350 70 L342 72 L340 80 L338 72 L330 70 L338 68 Z"/>
+    <path d="M200 350 L202 358 L210 360 L202 362 L200 370 L198 362 L190 360 L198 358 Z"/>
+    <path d="M360 300 L362 308 L370 310 L362 312 L360 320 L358 312 L350 310 L358 308 Z"/>
+    <path d="M120 180 L121.5 186 L128 187.5 L121.5 189 L120 195 L118.5 189 L112 187.5 L118.5 186 Z"/>
+    <path d="M280 140 L281.5 146 L288 147.5 L281.5 149 L280 155 L278.5 149 L272 147.5 L278.5 146 Z"/>
+  </g>
+</svg>
+</div>
+<div class="page-deco" data-deco="paws" hidden style="opacity:.35">
+<svg viewBox="0 0 400 400" preserveAspectRatio="none" style="width:100%;height:100%">
+  <g fill="hsl(340 50% 70%)">
+    <g transform="translate(80 100) rotate(-15)"><circle cx="0" cy="0" r="6"/><circle cx="-8" cy="-8" r="3"/><circle cx="0" cy="-11" r="3"/><circle cx="8" cy="-8" r="3"/></g>
+    <g transform="translate(320 240) rotate(20)"><circle cx="0" cy="0" r="6"/><circle cx="-8" cy="-8" r="3"/><circle cx="0" cy="-11" r="3"/><circle cx="8" cy="-8" r="3"/></g>
+    <g transform="translate(160 320) rotate(-30)"><circle cx="0" cy="0" r="6"/><circle cx="-8" cy="-8" r="3"/><circle cx="0" cy="-11" r="3"/><circle cx="8" cy="-8" r="3"/></g>
+    <g transform="translate(360 140) rotate(10)"><circle cx="0" cy="0" r="5"/><circle cx="-7" cy="-7" r="2.5"/><circle cx="0" cy="-9" r="2.5"/><circle cx="7" cy="-7" r="2.5"/></g>
+  </g>
+</svg>
+</div>
+<div class="page-deco" data-deco="clouds" hidden style="opacity:.45">
+<svg viewBox="0 0 400 400" preserveAspectRatio="none" style="width:100%;height:100%">
+  <g fill="hsl(190 60% 85%)">
+    <ellipse cx="60" cy="90" rx="40" ry="18"/><ellipse cx="90" cy="85" rx="30" ry="16"/>
+    <ellipse cx="330" cy="140" rx="36" ry="16"/><ellipse cx="355" cy="135" rx="28" ry="14"/>
+    <ellipse cx="150" cy="360" rx="38" ry="16"/><ellipse cx="180" cy="355" rx="26" ry="13"/>
+  </g>
+</svg>
+</div>
+<div class="page-deco" data-deco="hearts" hidden style="opacity:.5">
+<svg viewBox="0 0 400 400" preserveAspectRatio="none" style="width:100%;height:100%">
+  <g fill="hsl(340 80% 82%)">
+    <path d="M50 120 q 6 -10 12 0 q 6 -10 12 0 q 0 10 -12 18 q -12 -8 -12 -18 z"/>
+    <path d="M340 200 q 7 -12 14 0 q 7 -12 14 0 q 0 12 -14 22 q -14 -10 -14 -22 z"/>
+    <path d="M180 340 q 5 -8 10 0 q 5 -8 10 0 q 0 8 -10 14 q -10 -6 -10 -14 z"/>
+    <path d="M280 80 q 5 -8 10 0 q 5 -8 10 0 q 0 8 -10 14 q -10 -6 -10 -14 z"/>
+    <path d="M60 300 q 6 -10 12 0 q 6 -10 12 0 q 0 10 -12 18 q -12 -8 -12 -18 z"/>
+    <path d="M360 340 q 5 -8 10 0 q 5 -8 10 0 q 0 8 -10 14 q -10 -6 -10 -14 z"/>
+  </g>
+</svg>
+</div>
+
+<div class="chibi-scene" style="padding-top:20px">
+<svg viewBox="0 0 120 120" aria-hidden="true">
+<ellipse cx="60" cy="100" rx="26" ry="14" fill="hsl(340 70% 85%)"/>
+<circle cx="60" cy="60" r="28" fill="hsl(30 60% 92%)"/>
+<path d="M32 55 Q 30 30 60 28 Q 90 30 88 55 Q 86 40 78 38 Q 70 36 60 36 Q 50 36 42 38 Q 34 40 32 55 Z" fill="hsl(340 60% 68%)"/>
+<path d="M38 50 Q 42 42 50 44 Q 56 38 62 44 Q 70 42 78 48 Q 76 42 68 40 Q 60 38 52 40 Q 44 42 38 50 Z" fill="hsl(340 60% 60%)"/>
+<path d="M48 60 Q 51 57 54 60" fill="none" stroke="hsl(330 30% 25%)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M66 60 Q 69 57 72 60" fill="none" stroke="hsl(330 30% 25%)" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="46" cy="66" r="3" fill="hsl(340 70% 78%)" opacity=".7"/>
+<circle cx="74" cy="66" r="3" fill="hsl(340 70% 78%)" opacity=".7"/>
+<path d="M57 68 Q 60 70 63 68" fill="none" stroke="hsl(330 30% 25%)" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M78 38 L 80 44 L 86 46 L 80 48 L 78 54 L 76 48 L 70 46 L 76 44 Z" fill="hsl(45 90% 65%)"/>
+<path d="M36 88 Q 30 90 32 96" stroke="hsl(30 60% 85%)" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M84 88 Q 90 90 88 96" stroke="hsl(30 60% 85%)" stroke-width="5" fill="none" stroke-linecap="round"/>
+<rect x="52" y="82" width="16" height="16" rx="3" fill="hsl(190 60% 85%)"/>
+<path d="M68 86 Q 74 88 74 92 Q 74 96 68 96" fill="none" stroke="hsl(190 60% 65%)" stroke-width="2"/>
+<ellipse cx="22" cy="102" rx="10" ry="7" fill="hsl(45 80% 80%)"/>
+<circle cx="22" cy="94" r="8" fill="hsl(45 80% 85%)"/>
+<path d="M15 90 L 18 84 L 21 90 Z" fill="hsl(45 80% 75%)"/>
+<path d="M23 90 L 26 84 L 29 90 Z" fill="hsl(45 80% 75%)"/>
+<circle cx="19" cy="95" r="1.2" fill="hsl(330 30% 25%)"/>
+<circle cx="25" cy="95" r="1.2" fill="hsl(330 30% 25%)"/>
+<path d="M21 98 L 23 98" stroke="hsl(340 60% 60%)" stroke-width="1" stroke-linecap="round"/>
+</svg>
+</div>
+
+<div class="cover-inner">
+<div style="display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+  <span class="kicker">✦ Chibi Kawaii Planner ✦</span>
+  <span style="display:inline-block;padding:3px 12px;border-radius:999px;background:color-mix(in srgb,var(--accent) 25%,var(--card));border:1.5px solid var(--accent);color:var(--fg);font-size:11px;font-weight:800;letter-spacing:.05em;">v2.2.4</span>
+</div>
+<h1 contenteditable="true" data-key="cover.title">My Cozy Planner</h1>
+<p class="cover-tag" contenteditable="true" data-key="cover.tag">A soft, playful planner with 7 dedicated daily pages — each day has its own pastel color, chibi mascot, mood tracker, water intake, and cozy little moments to capture. Archive each week and start fresh whenever you like.</p>
+<div class="xp-bar"><div class="xp-fill" style="width:25%"></div><span>Lvl 1 · 25 XP</span></div>
+<nav class="cover-nav">
+<a href="#week-mon">🌸 Mon</a><a href="#week-tue">💙 Tue</a><a href="#week-wed">🌿 Wed</a><a href="#week-thu">💜 Thu</a><a href="#week-fri">🍑 Fri</a><a href="#week-sat">🌻 Sat</a><a href="#week-sun">🍓 Sun</a>
+</nav>
+</div>
+</section>
+
+<!-- ══════════ MONDAY ══════════ -->
+<section id="week-mon" class="daily-page" style="background:linear-gradient(180deg,#fff0f6,#ffffff 30%)">
+<header class="daily-header">
+<a class="back" href="#cover" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:13px;">← Cover</a>
+<h2><span class="chibi-avatar" style="background:#ffd6e8;border-color:#ff8fb8">🌸</span>Monday</h2>
+<span class="daily-date">Week 01 · Day 01</span>
+</header>
+<div class="daily-body">
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">⭐</span> Top 3 Priorities</h4>
+<div class="priority-list">
+<div class="priority-item"><span class="num">1</span><input type="checkbox" data-key="mon.p1.d"/><div class="txt" contenteditable="true" data-key="mon.p1.t" data-placeholder="Most important thing today…"></div></div>
+<div class="priority-item"><span class="num">2</span><input type="checkbox" data-key="mon.p2.d"/><div class="txt" contenteditable="true" data-key="mon.p2.t" data-placeholder="Second priority…"></div></div>
+<div class="priority-item"><span class="num">3</span><input type="checkbox" data-key="mon.p3.d"/><div class="txt" contenteditable="true" data-key="mon.p3.t" data-placeholder="Third priority…"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🕐</span> Hourly Schedule</h4>
+<div class="hourly">
+<div class="hr"><span class="time">6:00</span><div class="line" contenteditable="true" data-key="mon.h6"></div></div>
+<div class="hr"><span class="time">7:00</span><div class="line" contenteditable="true" data-key="mon.h7"></div></div>
+<div class="hr"><span class="time">8:00</span><div class="line" contenteditable="true" data-key="mon.h8"></div></div>
+<div class="hr"><span class="time">9:00</span><div class="line" contenteditable="true" data-key="mon.h9"></div></div>
+<div class="hr"><span class="time">10:00</span><div class="line" contenteditable="true" data-key="mon.h10"></div></div>
+<div class="hr"><span class="time">11:00</span><div class="line" contenteditable="true" data-key="mon.h11"></div></div>
+<div class="hr"><span class="time">12:00</span><div class="line" contenteditable="true" data-key="mon.h12"></div></div>
+<div class="hr"><span class="time">13:00</span><div class="line" contenteditable="true" data-key="mon.h13"></div></div>
+<div class="hr"><span class="time">14:00</span><div class="line" contenteditable="true" data-key="mon.h14"></div></div>
+<div class="hr"><span class="time">15:00</span><div class="line" contenteditable="true" data-key="mon.h15"></div></div>
+<div class="hr"><span class="time">16:00</span><div class="line" contenteditable="true" data-key="mon.h16"></div></div>
+<div class="hr"><span class="time">17:00</span><div class="line" contenteditable="true" data-key="mon.h17"></div></div>
+<div class="hr"><span class="time">18:00</span><div class="line" contenteditable="true" data-key="mon.h18"></div></div>
+<div class="hr"><span class="time">19:00</span><div class="line" contenteditable="true" data-key="mon.h19"></div></div>
+<div class="hr"><span class="time">20:00</span><div class="line" contenteditable="true" data-key="mon.h20"></div></div>
+<div class="hr"><span class="time">21:00</span><div class="line" contenteditable="true" data-key="mon.h21"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">📝</span> Notes & Thoughts</h4>
+<textarea data-key="mon.notes" placeholder="What's on your mind today?"></textarea></div>
+</div>
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">💗</span> Mood</h4>
+<div class="mood-row" data-key="mon.mood"><span class="mood" data-mood="😞">😞</span><span class="mood" data-mood="😐">😐</span><span class="mood" data-mood="🙂">🙂</span><span class="mood" data-mood="😄">😄</span><span class="mood" data-mood="🤩">🤩</span></div>
+<textarea data-key="mon.mood.note" placeholder="Why this mood?" style="min-height:40px"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">💧</span> Water Intake</h4>
+<div class="water-row" data-key="mon.water"><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span></div></div>
+<div class="daily-box"><h4><span class="emoji">🌿</span> Mini Habits</h4>
+<div class="habit-mini">
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="mon.hab1.n" data-placeholder="Habit 1…"></div><div class="pips" data-key="mon.hab1.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="mon.hab2.n" data-placeholder="Habit 2…"></div><div class="pips" data-key="mon.hab2.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="mon.hab3.n" data-placeholder="Habit 3…"></div><div class="pips" data-key="mon.hab3.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🌸</span> Gratitude</h4>
+<textarea data-key="mon.gratitude" placeholder="3 small things you're grateful for…"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">🍰</span> Cozy Moment of the Day</h4>
+<textarea data-key="mon.cozy" placeholder="A tiny moment that made you smile…"></textarea></div>
+</div>
+</div>
+</section>
+
+<!-- ══════════ TUESDAY ══════════ -->
+<section id="week-tue" class="daily-page" style="background:linear-gradient(180deg,#eaf4ff,#ffffff 30%)">
+<header class="daily-header">
+<a class="back" href="#week-mon" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:13px;">← Mon</a>
+<h2><span class="chibi-avatar" style="background:#d6e8ff;border-color:#8fb8ff">💙</span>Tuesday</h2>
+<span class="daily-date">Week 01 · Day 02</span>
+</header>
+<div class="daily-body">
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">⭐</span> Top 3 Priorities</h4>
+<div class="priority-list">
+<div class="priority-item"><span class="num">1</span><input type="checkbox" data-key="tue.p1.d"/><div class="txt" contenteditable="true" data-key="tue.p1.t" data-placeholder="Most important thing today…"></div></div>
+<div class="priority-item"><span class="num">2</span><input type="checkbox" data-key="tue.p2.d"/><div class="txt" contenteditable="true" data-key="tue.p2.t" data-placeholder="Second priority…"></div></div>
+<div class="priority-item"><span class="num">3</span><input type="checkbox" data-key="tue.p3.d"/><div class="txt" contenteditable="true" data-key="tue.p3.t" data-placeholder="Third priority…"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🕐</span> Hourly Schedule</h4>
+<div class="hourly">
+<div class="hr"><span class="time">6:00</span><div class="line" contenteditable="true" data-key="tue.h6"></div></div>
+<div class="hr"><span class="time">7:00</span><div class="line" contenteditable="true" data-key="tue.h7"></div></div>
+<div class="hr"><span class="time">8:00</span><div class="line" contenteditable="true" data-key="tue.h8"></div></div>
+<div class="hr"><span class="time">9:00</span><div class="line" contenteditable="true" data-key="tue.h9"></div></div>
+<div class="hr"><span class="time">10:00</span><div class="line" contenteditable="true" data-key="tue.h10"></div></div>
+<div class="hr"><span class="time">11:00</span><div class="line" contenteditable="true" data-key="tue.h11"></div></div>
+<div class="hr"><span class="time">12:00</span><div class="line" contenteditable="true" data-key="tue.h12"></div></div>
+<div class="hr"><span class="time">13:00</span><div class="line" contenteditable="true" data-key="tue.h13"></div></div>
+<div class="hr"><span class="time">14:00</span><div class="line" contenteditable="true" data-key="tue.h14"></div></div>
+<div class="hr"><span class="time">15:00</span><div class="line" contenteditable="true" data-key="tue.h15"></div></div>
+<div class="hr"><span class="time">16:00</span><div class="line" contenteditable="true" data-key="tue.h16"></div></div>
+<div class="hr"><span class="time">17:00</span><div class="line" contenteditable="true" data-key="tue.h17"></div></div>
+<div class="hr"><span class="time">18:00</span><div class="line" contenteditable="true" data-key="tue.h18"></div></div>
+<div class="hr"><span class="time">19:00</span><div class="line" contenteditable="true" data-key="tue.h19"></div></div>
+<div class="hr"><span class="time">20:00</span><div class="line" contenteditable="true" data-key="tue.h20"></div></div>
+<div class="hr"><span class="time">21:00</span><div class="line" contenteditable="true" data-key="tue.h21"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">📝</span> Notes & Thoughts</h4>
+<textarea data-key="tue.notes" placeholder="What's on your mind today?"></textarea></div>
+</div>
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">💗</span> Mood</h4>
+<div class="mood-row" data-key="tue.mood"><span class="mood" data-mood="😞">😞</span><span class="mood" data-mood="😐">😐</span><span class="mood" data-mood="🙂">🙂</span><span class="mood" data-mood="😄">😄</span><span class="mood" data-mood="🤩">🤩</span></div>
+<textarea data-key="tue.mood.note" placeholder="Why this mood?" style="min-height:40px"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">💧</span> Water Intake</h4>
+<div class="water-row" data-key="tue.water"><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span></div></div>
+<div class="daily-box"><h4><span class="emoji">🌿</span> Mini Habits</h4>
+<div class="habit-mini">
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="tue.hab1.n" data-placeholder="Habit 1…"></div><div class="pips" data-key="tue.hab1.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="tue.hab2.n" data-placeholder="Habit 2…"></div><div class="pips" data-key="tue.hab2.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="tue.hab3.n" data-placeholder="Habit 3…"></div><div class="pips" data-key="tue.hab3.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🌸</span> Gratitude</h4>
+<textarea data-key="tue.gratitude" placeholder="3 small things you're grateful for…"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">🍰</span> Cozy Moment of the Day</h4>
+<textarea data-key="tue.cozy" placeholder="A tiny moment that made you smile…"></textarea></div>
+</div>
+</div>
+</section>
+
+<!-- ══════════ WEDNESDAY ══════════ -->
+<section id="week-wed" class="daily-page" style="background:linear-gradient(180deg,#eafff2,#ffffff 30%)">
+<header class="daily-header">
+<a class="back" href="#week-tue" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:13px;">← Tue</a>
+<h2><span class="chibi-avatar" style="background:#d6ffe8;border-color:#8fe0b8">🌿</span>Wednesday</h2>
+<span class="daily-date">Week 01 · Day 03</span>
+</header>
+<div class="daily-body">
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">⭐</span> Top 3 Priorities</h4>
+<div class="priority-list">
+<div class="priority-item"><span class="num">1</span><input type="checkbox" data-key="wed.p1.d"/><div class="txt" contenteditable="true" data-key="wed.p1.t" data-placeholder="Most important thing today…"></div></div>
+<div class="priority-item"><span class="num">2</span><input type="checkbox" data-key="wed.p2.d"/><div class="txt" contenteditable="true" data-key="wed.p2.t" data-placeholder="Second priority…"></div></div>
+<div class="priority-item"><span class="num">3</span><input type="checkbox" data-key="wed.p3.d"/><div class="txt" contenteditable="true" data-key="wed.p3.t" data-placeholder="Third priority…"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🕐</span> Hourly Schedule</h4>
+<div class="hourly">
+<div class="hr"><span class="time">6:00</span><div class="line" contenteditable="true" data-key="wed.h6"></div></div>
+<div class="hr"><span class="time">7:00</span><div class="line" contenteditable="true" data-key="wed.h7"></div></div>
+<div class="hr"><span class="time">8:00</span><div class="line" contenteditable="true" data-key="wed.h8"></div></div>
+<div class="hr"><span class="time">9:00</span><div class="line" contenteditable="true" data-key="wed.h9"></div></div>
+<div class="hr"><span class="time">10:00</span><div class="line" contenteditable="true" data-key="wed.h10"></div></div>
+<div class="hr"><span class="time">11:00</span><div class="line" contenteditable="true" data-key="wed.h11"></div></div>
+<div class="hr"><span class="time">12:00</span><div class="line" contenteditable="true" data-key="wed.h12"></div></div>
+<div class="hr"><span class="time">13:00</span><div class="line" contenteditable="true" data-key="wed.h13"></div></div>
+<div class="hr"><span class="time">14:00</span><div class="line" contenteditable="true" data-key="wed.h14"></div></div>
+<div class="hr"><span class="time">15:00</span><div class="line" contenteditable="true" data-key="wed.h15"></div></div>
+<div class="hr"><span class="time">16:00</span><div class="line" contenteditable="true" data-key="wed.h16"></div></div>
+<div class="hr"><span class="time">17:00</span><div class="line" contenteditable="true" data-key="wed.h17"></div></div>
+<div class="hr"><span class="time">18:00</span><div class="line" contenteditable="true" data-key="wed.h18"></div></div>
+<div class="hr"><span class="time">19:00</span><div class="line" contenteditable="true" data-key="wed.h19"></div></div>
+<div class="hr"><span class="time">20:00</span><div class="line" contenteditable="true" data-key="wed.h20"></div></div>
+<div class="hr"><span class="time">21:00</span><div class="line" contenteditable="true" data-key="wed.h21"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">📝</span> Notes & Thoughts</h4>
+<textarea data-key="wed.notes" placeholder="What's on your mind today?"></textarea></div>
+</div>
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">💗</span> Mood</h4>
+<div class="mood-row" data-key="wed.mood"><span class="mood" data-mood="😞">😞</span><span class="mood" data-mood="😐">😐</span><span class="mood" data-mood="🙂">🙂</span><span class="mood" data-mood="😄">😄</span><span class="mood" data-mood="🤩">🤩</span></div>
+<textarea data-key="wed.mood.note" placeholder="Why this mood?" style="min-height:40px"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">💧</span> Water Intake</h4>
+<div class="water-row" data-key="wed.water"><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span></div></div>
+<div class="daily-box"><h4><span class="emoji">🌿</span> Mini Habits</h4>
+<div class="habit-mini">
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="wed.hab1.n" data-placeholder="Habit 1…"></div><div class="pips" data-key="wed.hab1.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="wed.hab2.n" data-placeholder="Habit 2…"></div><div class="pips" data-key="wed.hab2.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="wed.hab3.n" data-placeholder="Habit 3…"></div><div class="pips" data-key="wed.hab3.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🌸</span> Gratitude</h4>
+<textarea data-key="wed.gratitude" placeholder="3 small things you're grateful for…"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">🍰</span> Cozy Moment of the Day</h4>
+<textarea data-key="wed.cozy" placeholder="A tiny moment that made you smile…"></textarea></div>
+</div>
+</div>
+</section>
+
+<!-- ══════════ THURSDAY ══════════ -->
+<section id="week-thu" class="daily-page" style="background:linear-gradient(180deg,#f3eaff,#ffffff 30%)">
+<header class="daily-header">
+<a class="back" href="#week-wed" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:13px;">← Wed</a>
+<h2><span class="chibi-avatar" style="background:#e8d6ff;border-color:#b88fff">💜</span>Thursday</h2>
+<span class="daily-date">Week 01 · Day 04</span>
+</header>
+<div class="daily-body">
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">⭐</span> Top 3 Priorities</h4>
+<div class="priority-list">
+<div class="priority-item"><span class="num">1</span><input type="checkbox" data-key="thu.p1.d"/><div class="txt" contenteditable="true" data-key="thu.p1.t" data-placeholder="Most important thing today…"></div></div>
+<div class="priority-item"><span class="num">2</span><input type="checkbox" data-key="thu.p2.d"/><div class="txt" contenteditable="true" data-key="thu.p2.t" data-placeholder="Second priority…"></div></div>
+<div class="priority-item"><span class="num">3</span><input type="checkbox" data-key="thu.p3.d"/><div class="txt" contenteditable="true" data-key="thu.p3.t" data-placeholder="Third priority…"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🕐</span> Hourly Schedule</h4>
+<div class="hourly">
+<div class="hr"><span class="time">6:00</span><div class="line" contenteditable="true" data-key="thu.h6"></div></div>
+<div class="hr"><span class="time">7:00</span><div class="line" contenteditable="true" data-key="thu.h7"></div></div>
+<div class="hr"><span class="time">8:00</span><div class="line" contenteditable="true" data-key="thu.h8"></div></div>
+<div class="hr"><span class="time">9:00</span><div class="line" contenteditable="true" data-key="thu.h9"></div></div>
+<div class="hr"><span class="time">10:00</span><div class="line" contenteditable="true" data-key="thu.h10"></div></div>
+<div class="hr"><span class="time">11:00</span><div class="line" contenteditable="true" data-key="thu.h11"></div></div>
+<div class="hr"><span class="time">12:00</span><div class="line" contenteditable="true" data-key="thu.h12"></div></div>
+<div class="hr"><span class="time">13:00</span><div class="line" contenteditable="true" data-key="thu.h13"></div></div>
+<div class="hr"><span class="time">14:00</span><div class="line" contenteditable="true" data-key="thu.h14"></div></div>
+<div class="hr"><span class="time">15:00</span><div class="line" contenteditable="true" data-key="thu.h15"></div></div>
+<div class="hr"><span class="time">16:00</span><div class="line" contenteditable="true" data-key="thu.h16"></div></div>
+<div class="hr"><span class="time">17:00</span><div class="line" contenteditable="true" data-key="thu.h17"></div></div>
+<div class="hr"><span class="time">18:00</span><div class="line" contenteditable="true" data-key="thu.h18"></div></div>
+<div class="hr"><span class="time">19:00</span><div class="line" contenteditable="true" data-key="thu.h19"></div></div>
+<div class="hr"><span class="time">20:00</span><div class="line" contenteditable="true" data-key="thu.h20"></div></div>
+<div class="hr"><span class="time">21:00</span><div class="line" contenteditable="true" data-key="thu.h21"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">📝</span> Notes & Thoughts</h4>
+<textarea data-key="thu.notes" placeholder="What's on your mind today?"></textarea></div>
+</div>
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">💗</span> Mood</h4>
+<div class="mood-row" data-key="thu.mood"><span class="mood" data-mood="😞">😞</span><span class="mood" data-mood="😐">😐</span><span class="mood" data-mood="🙂">🙂</span><span class="mood" data-mood="😄">😄</span><span class="mood" data-mood="🤩">🤩</span></div>
+<textarea data-key="thu.mood.note" placeholder="Why this mood?" style="min-height:40px"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">💧</span> Water Intake</h4>
+<div class="water-row" data-key="thu.water"><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span></div></div>
+<div class="daily-box"><h4><span class="emoji">🌿</span> Mini Habits</h4>
+<div class="habit-mini">
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="thu.hab1.n" data-placeholder="Habit 1…"></div><div class="pips" data-key="thu.hab1.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="thu.hab2.n" data-placeholder="Habit 2…"></div><div class="pips" data-key="thu.hab2.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="thu.hab3.n" data-placeholder="Habit 3…"></div><div class="pips" data-key="thu.hab3.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🌸</span> Gratitude</h4>
+<textarea data-key="thu.gratitude" placeholder="3 small things you're grateful for…"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">🍰</span> Cozy Moment of the Day</h4>
+<textarea data-key="thu.cozy" placeholder="A tiny moment that made you smile…"></textarea></div>
+</div>
+</div>
+</section>
+
+<!-- ══════════ FRIDAY ══════════ -->
+<section id="week-fri" class="daily-page" style="background:linear-gradient(180deg,#fff2e8,#ffffff 30%)">
+<header class="daily-header">
+<a class="back" href="#week-thu" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:13px;">← Thu</a>
+<h2><span class="chibi-avatar" style="background:#ffe8d6;border-color:#ffb88f">🍑</span>Friday</h2>
+<span class="daily-date">Week 01 · Day 05</span>
+</header>
+<div class="daily-body">
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">⭐</span> Top 3 Priorities</h4>
+<div class="priority-list">
+<div class="priority-item"><span class="num">1</span><input type="checkbox" data-key="fri.p1.d"/><div class="txt" contenteditable="true" data-key="fri.p1.t" data-placeholder="Most important thing today…"></div></div>
+<div class="priority-item"><span class="num">2</span><input type="checkbox" data-key="fri.p2.d"/><div class="txt" contenteditable="true" data-key="fri.p2.t" data-placeholder="Second priority…"></div></div>
+<div class="priority-item"><span class="num">3</span><input type="checkbox" data-key="fri.p3.d"/><div class="txt" contenteditable="true" data-key="fri.p3.t" data-placeholder="Third priority…"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🕐</span> Hourly Schedule</h4>
+<div class="hourly">
+<div class="hr"><span class="time">6:00</span><div class="line" contenteditable="true" data-key="fri.h6"></div></div>
+<div class="hr"><span class="time">7:00</span><div class="line" contenteditable="true" data-key="fri.h7"></div></div>
+<div class="hr"><span class="time">8:00</span><div class="line" contenteditable="true" data-key="fri.h8"></div></div>
+<div class="hr"><span class="time">9:00</span><div class="line" contenteditable="true" data-key="fri.h9"></div></div>
+<div class="hr"><span class="time">10:00</span><div class="line" contenteditable="true" data-key="fri.h10"></div></div>
+<div class="hr"><span class="time">11:00</span><div class="line" contenteditable="true" data-key="fri.h11"></div></div>
+<div class="hr"><span class="time">12:00</span><div class="line" contenteditable="true" data-key="fri.h12"></div></div>
+<div class="hr"><span class="time">13:00</span><div class="line" contenteditable="true" data-key="fri.h13"></div></div>
+<div class="hr"><span class="time">14:00</span><div class="line" contenteditable="true" data-key="fri.h14"></div></div>
+<div class="hr"><span class="time">15:00</span><div class="line" contenteditable="true" data-key="fri.h15"></div></div>
+<div class="hr"><span class="time">16:00</span><div class="line" contenteditable="true" data-key="fri.h16"></div></div>
+<div class="hr"><span class="time">17:00</span><div class="line" contenteditable="true" data-key="fri.h17"></div></div>
+<div class="hr"><span class="time">18:00</span><div class="line" contenteditable="true" data-key="fri.h18"></div></div>
+<div class="hr"><span class="time">19:00</span><div class="line" contenteditable="true" data-key="fri.h19"></div></div>
+<div class="hr"><span class="time">20:00</span><div class="line" contenteditable="true" data-key="fri.h20"></div></div>
+<div class="hr"><span class="time">21:00</span><div class="line" contenteditable="true" data-key="fri.h21"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">📝</span> Notes & Thoughts</h4>
+<textarea data-key="fri.notes" placeholder="What's on your mind today?"></textarea></div>
+</div>
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">💗</span> Mood</h4>
+<div class="mood-row" data-key="fri.mood"><span class="mood" data-mood="😞">😞</span><span class="mood" data-mood="😐">😐</span><span class="mood" data-mood="🙂">🙂</span><span class="mood" data-mood="😄">😄</span><span class="mood" data-mood="🤩">🤩</span></div>
+<textarea data-key="fri.mood.note" placeholder="Why this mood?" style="min-height:40px"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">💧</span> Water Intake</h4>
+<div class="water-row" data-key="fri.water"><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span></div></div>
+<div class="daily-box"><h4><span class="emoji">🌿</span> Mini Habits</h4>
+<div class="habit-mini">
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="fri.hab1.n" data-placeholder="Habit 1…"></div><div class="pips" data-key="fri.hab1.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="fri.hab2.n" data-placeholder="Habit 2…"></div><div class="pips" data-key="fri.hab2.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="fri.hab3.n" data-placeholder="Habit 3…"></div><div class="pips" data-key="fri.hab3.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🌸</span> Gratitude</h4>
+<textarea data-key="fri.gratitude" placeholder="3 small things you're grateful for…"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">🍰</span> Cozy Moment of the Day</h4>
+<textarea data-key="fri.cozy" placeholder="A tiny moment that made you smile…"></textarea></div>
+</div>
+</div>
+</section>
+
+<!-- ══════════ SATURDAY ══════════ -->
+<section id="week-sat" class="daily-page" style="background:linear-gradient(180deg,#fffbe8,#ffffff 30%)">
+<header class="daily-header">
+<a class="back" href="#week-fri" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:13px;">← Fri</a>
+<h2><span class="chibi-avatar" style="background:#fff5d6;border-color:#ffe08f">🌻</span>Saturday</h2>
+<span class="daily-date">Week 01 · Day 06</span>
+</header>
+<div class="daily-body">
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">⭐</span> Top 3 Priorities</h4>
+<div class="priority-list">
+<div class="priority-item"><span class="num">1</span><input type="checkbox" data-key="sat.p1.d"/><div class="txt" contenteditable="true" data-key="sat.p1.t" data-placeholder="Most important thing today…"></div></div>
+<div class="priority-item"><span class="num">2</span><input type="checkbox" data-key="sat.p2.d"/><div class="txt" contenteditable="true" data-key="sat.p2.t" data-placeholder="Second priority…"></div></div>
+<div class="priority-item"><span class="num">3</span><input type="checkbox" data-key="sat.p3.d"/><div class="txt" contenteditable="true" data-key="sat.p3.t" data-placeholder="Third priority…"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🕐</span> Hourly Schedule</h4>
+<div class="hourly">
+<div class="hr"><span class="time">6:00</span><div class="line" contenteditable="true" data-key="sat.h6"></div></div>
+<div class="hr"><span class="time">7:00</span><div class="line" contenteditable="true" data-key="sat.h7"></div></div>
+<div class="hr"><span class="time">8:00</span><div class="line" contenteditable="true" data-key="sat.h8"></div></div>
+<div class="hr"><span class="time">9:00</span><div class="line" contenteditable="true" data-key="sat.h9"></div></div>
+<div class="hr"><span class="time">10:00</span><div class="line" contenteditable="true" data-key="sat.h10"></div></div>
+<div class="hr"><span class="time">11:00</span><div class="line" contenteditable="true" data-key="sat.h11"></div></div>
+<div class="hr"><span class="time">12:00</span><div class="line" contenteditable="true" data-key="sat.h12"></div></div>
+<div class="hr"><span class="time">13:00</span><div class="line" contenteditable="true" data-key="sat.h13"></div></div>
+<div class="hr"><span class="time">14:00</span><div class="line" contenteditable="true" data-key="sat.h14"></div></div>
+<div class="hr"><span class="time">15:00</span><div class="line" contenteditable="true" data-key="sat.h15"></div></div>
+<div class="hr"><span class="time">16:00</span><div class="line" contenteditable="true" data-key="sat.h16"></div></div>
+<div class="hr"><span class="time">17:00</span><div class="line" contenteditable="true" data-key="sat.h17"></div></div>
+<div class="hr"><span class="time">18:00</span><div class="line" contenteditable="true" data-key="sat.h18"></div></div>
+<div class="hr"><span class="time">19:00</span><div class="line" contenteditable="true" data-key="sat.h19"></div></div>
+<div class="hr"><span class="time">20:00</span><div class="line" contenteditable="true" data-key="sat.h20"></div></div>
+<div class="hr"><span class="time">21:00</span><div class="line" contenteditable="true" data-key="sat.h21"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">📝</span> Notes & Thoughts</h4>
+<textarea data-key="sat.notes" placeholder="What's on your mind today?"></textarea></div>
+</div>
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">💗</span> Mood</h4>
+<div class="mood-row" data-key="sat.mood"><span class="mood" data-mood="😞">😞</span><span class="mood" data-mood="😐">😐</span><span class="mood" data-mood="🙂">🙂</span><span class="mood" data-mood="😄">😄</span><span class="mood" data-mood="🤩">🤩</span></div>
+<textarea data-key="sat.mood.note" placeholder="Why this mood?" style="min-height:40px"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">💧</span> Water Intake</h4>
+<div class="water-row" data-key="sat.water"><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span></div></div>
+<div class="daily-box"><h4><span class="emoji">🌿</span> Mini Habits</h4>
+<div class="habit-mini">
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="sat.hab1.n" data-placeholder="Habit 1…"></div><div class="pips" data-key="sat.hab1.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="sat.hab2.n" data-placeholder="Habit 2…"></div><div class="pips" data-key="sat.hab2.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="sat.hab3.n" data-placeholder="Habit 3…"></div><div class="pips" data-key="sat.hab3.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🌸</span> Gratitude</h4>
+<textarea data-key="sat.gratitude" placeholder="3 small things you're grateful for…"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">🍰</span> Cozy Moment of the Day</h4>
+<textarea data-key="sat.cozy" placeholder="A tiny moment that made you smile…"></textarea></div>
+</div>
+</div>
+</section>
+
+<!-- ══════════ SUNDAY ══════════ -->
+<section id="week-sun" class="daily-page" style="background:linear-gradient(180deg,#ffeaea,#ffffff 30%)">
+<header class="daily-header">
+<a class="back" href="#week-sat" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:13px;">← Sat</a>
+<h2><span class="chibi-avatar" style="background:#ffd6d6;border-color:#ff8f8f">🍓</span>Sunday</h2>
+<span class="daily-date">Week 01 · Day 07</span>
+</header>
+<div class="daily-body">
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">⭐</span> Top 3 Priorities</h4>
+<div class="priority-list">
+<div class="priority-item"><span class="num">1</span><input type="checkbox" data-key="sun.p1.d"/><div class="txt" contenteditable="true" data-key="sun.p1.t" data-placeholder="Most important thing today…"></div></div>
+<div class="priority-item"><span class="num">2</span><input type="checkbox" data-key="sun.p2.d"/><div class="txt" contenteditable="true" data-key="sun.p2.t" data-placeholder="Second priority…"></div></div>
+<div class="priority-item"><span class="num">3</span><input type="checkbox" data-key="sun.p3.d"/><div class="txt" contenteditable="true" data-key="sun.p3.t" data-placeholder="Third priority…"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🕐</span> Hourly Schedule</h4>
+<div class="hourly">
+<div class="hr"><span class="time">6:00</span><div class="line" contenteditable="true" data-key="sun.h6"></div></div>
+<div class="hr"><span class="time">7:00</span><div class="line" contenteditable="true" data-key="sun.h7"></div></div>
+<div class="hr"><span class="time">8:00</span><div class="line" contenteditable="true" data-key="sun.h8"></div></div>
+<div class="hr"><span class="time">9:00</span><div class="line" contenteditable="true" data-key="sun.h9"></div></div>
+<div class="hr"><span class="time">10:00</span><div class="line" contenteditable="true" data-key="sun.h10"></div></div>
+<div class="hr"><span class="time">11:00</span><div class="line" contenteditable="true" data-key="sun.h11"></div></div>
+<div class="hr"><span class="time">12:00</span><div class="line" contenteditable="true" data-key="sun.h12"></div></div>
+<div class="hr"><span class="time">13:00</span><div class="line" contenteditable="true" data-key="sun.h13"></div></div>
+<div class="hr"><span class="time">14:00</span><div class="line" contenteditable="true" data-key="sun.h14"></div></div>
+<div class="hr"><span class="time">15:00</span><div class="line" contenteditable="true" data-key="sun.h15"></div></div>
+<div class="hr"><span class="time">16:00</span><div class="line" contenteditable="true" data-key="sun.h16"></div></div>
+<div class="hr"><span class="time">17:00</span><div class="line" contenteditable="true" data-key="sun.h17"></div></div>
+<div class="hr"><span class="time">18:00</span><div class="line" contenteditable="true" data-key="sun.h18"></div></div>
+<div class="hr"><span class="time">19:00</span><div class="line" contenteditable="true" data-key="sun.h19"></div></div>
+<div class="hr"><span class="time">20:00</span><div class="line" contenteditable="true" data-key="sun.h20"></div></div>
+<div class="hr"><span class="time">21:00</span><div class="line" contenteditable="true" data-key="sun.h21"></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">📝</span> Notes & Thoughts</h4>
+<textarea data-key="sun.notes" placeholder="What's on your mind today?"></textarea></div>
+</div>
+<div class="daily-col">
+<div class="daily-box"><h4><span class="emoji">💗</span> Mood</h4>
+<div class="mood-row" data-key="sun.mood"><span class="mood" data-mood="😞">😞</span><span class="mood" data-mood="😐">😐</span><span class="mood" data-mood="🙂">🙂</span><span class="mood" data-mood="😄">😄</span><span class="mood" data-mood="🤩">🤩</span></div>
+<textarea data-key="sun.mood.note" placeholder="Why this mood?" style="min-height:40px"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">💧</span> Water Intake</h4>
+<div class="water-row" data-key="sun.water"><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span><span class="glass"></span></div></div>
+<div class="daily-box"><h4><span class="emoji">🌿</span> Mini Habits</h4>
+<div class="habit-mini">
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="sun.hab1.n" data-placeholder="Habit 1…"></div><div class="pips" data-key="sun.hab1.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="sun.hab2.n" data-placeholder="Habit 2…"></div><div class="pips" data-key="sun.hab2.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<div class="h-row"><div class="h-name" contenteditable="true" data-key="sun.hab3.n" data-placeholder="Habit 3…"></div><div class="pips" data-key="sun.hab3.d"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+</div></div>
+<div class="daily-box"><h4><span class="emoji">🌸</span> Gratitude</h4>
+<textarea data-key="sun.gratitude" placeholder="3 small things you're grateful for…"></textarea></div>
+<div class="daily-box"><h4><span class="emoji">🍰</span> Cozy Moment of the Day</h4>
+<textarea data-key="sun.cozy" placeholder="A tiny moment that made you smile…"></textarea></div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- ══════════ ARCHIVE MODAL ══════════ -->
+<div class="modal-overlay" id="archiveModal">
+  <div class="modal">
+    <div class="modal-h">
+      <h2>📚 Archived Weeks</h2>
+      <button type="button" id="closeArchive" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" id="archiveBody">
+      <p class="hint">Each archived week is saved here. Use <b>👁 View</b> to peek without changing anything, or <b>↩ Restore</b> to make it your active week (you'll be asked what to do with your current week first).</p>
+      <div id="archiveList"></div>
+    </div>
+    <div class="modal-f">
+      <button type="button" id="closeArchive2">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ VIEW MODAL ══════════ -->
+<div class="modal-overlay" id="viewModal">
+  <div class="modal">
+    <div class="modal-h">
+      <h2 id="viewTitle">👁 Viewing week</h2>
+      <button type="button" id="closeView" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="view-tabs" id="viewTabs"></div>
+      <div id="viewContent"></div>
+    </div>
+    <div class="view-restore-bar">
+      <span class="label" id="viewRestoreLabel"></span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button type="button" id="viewCloseBtn" style="background:var(--card);color:var(--fg);border-color:var(--border);">Close</button>
+        <button type="button" id="viewRestoreBtn">↩ Restore this week</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>(function(){
+  var APP_VERSION = '2.2.4';
+  var KEY = 'planner-chibi-kawaii-2026';
+  var VERSION_KEY = KEY + ':version';
+  var ARCHIVE_KEY = KEY + ':archive';
+  var ACTIVE_ID_KEY = KEY + ':activeId';
+  var DECO_KEY = KEY + ':deco';
+  var BACKUP_KEY = KEY + ':lastBackup';
+  var LAST_REMINDER_KEY = KEY + ':lastReminder';
+  var DEFAULT_COVER_TITLE = 'My Cozy Planner';
+  var DEFAULT_COVER_TAG = 'A soft, playful planner with 7 dedicated daily pages — each day has its own pastel color, chibi mascot, mood tracker, water intake, and cozy little moments to capture. Archive each week and start fresh whenever you like.';
+
+  var state = {};
+  var activeWeekId = 'current';
+  var saving = false, t;
+
+  function loadActiveId(){
+    try {
+      var storedId = localStorage.getItem(ACTIVE_ID_KEY);
+      if(storedId) activeWeekId = storedId;
+    } catch(_){}
+  }
+
+  function saveActiveId(id){
+    activeWeekId = id || 'current';
+    try { localStorage.setItem(ACTIVE_ID_KEY, activeWeekId); } catch(_){}
+  }
+
+  function updateActiveWeekBadge(){
+    var tag = document.getElementById('activeWeekBadge');
+    if(!tag) return;
+    if(activeWeekId === 'current'){
+      tag.textContent = '📌 Live Week';
+      tag.style.background = 'color-mix(in srgb, var(--primary) 15%, var(--card))';
+      tag.style.color = 'var(--primary)';
+      tag.style.borderColor = 'var(--primary)';
+    } else {
+      var arr = loadArchive();
+      var entry = arr.find(function(w){ return w.id === activeWeekId; });
+      var name = entry ? entry.name : 'Archived Week';
+      tag.textContent = '✏️ Editing: ' + escapeHtml(name);
+      tag.style.background = 'color-mix(in srgb, var(--accent) 25%, var(--card))';
+      tag.style.color = 'var(--fg)';
+      tag.style.borderColor = 'var(--accent)';
+    }
+  }
+
+  function checkVersionAndMigrate(){
+    try {
+      var vEl = document.getElementById('versionTag');
+      if(vEl) vEl.textContent = '🏷️ v' + APP_VERSION;
+      var storedVersion = localStorage.getItem(VERSION_KEY);
+      if(storedVersion !== APP_VERSION){
+        var rawCur = localStorage.getItem(KEY);
+        if(rawCur){
+          var parsedCur = JSON.parse(rawCur);
+          if(parsedCur && typeof parsedCur === 'object'){
+            if(!parsedCur['cover.title']) parsedCur['cover.title'] = DEFAULT_COVER_TITLE;
+            if(!parsedCur['cover.tag']) parsedCur['cover.tag'] = DEFAULT_COVER_TAG;
+            localStorage.setItem(KEY, JSON.stringify(parsedCur));
+          }
+        }
+        var rawArc = localStorage.getItem(ARCHIVE_KEY);
+        if(rawArc){
+          var parsedArc = JSON.parse(rawArc);
+          if(Array.isArray(parsedArc)){
+            parsedArc.forEach(function(w){
+              if(w && w.data && typeof w.data === 'object'){
+                if(!w.data['cover.title']) w.data['cover.title'] = DEFAULT_COVER_TITLE;
+                if(!w.data['cover.tag']) w.data['cover.tag'] = DEFAULT_COVER_TAG;
+              }
+            });
+            localStorage.setItem(ARCHIVE_KEY, JSON.stringify(parsedArc));
+          }
+        }
+        localStorage.setItem(VERSION_KEY, APP_VERSION);
+      }
+    } catch(e){}
+  }
+
+  function escapeHtml(str){
+    if(str === undefined || str === null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function readEl(el){
+    if(el.tagName==='INPUT') return el.type==='checkbox' ? el.checked : el.value;
+    if(el.tagName==='TEXTAREA') return el.value;
+    if(el.classList.contains('pips')) return Array.from(el.children).map(function(c){return c.classList.contains('on')});
+    if(el.classList.contains('water-row')) return Array.from(el.children).map(function(c){return c.classList.contains('on')});
+    if(el.classList.contains('mood-row')) return Array.from(el.children).map(function(c){return c.classList.contains('active')});
+    return el.textContent;
+  }
+
+  function writeEl(el,v){
+    if(v===undefined) return;
+    if(el.tagName==='INPUT'){ if(el.type==='checkbox') el.checked=!!v; else el.value=v; return; }
+    if(el.tagName==='TEXTAREA'){ el.value=v; return; }
+    if(el.classList.contains('pips') && Array.isArray(v)){ Array.from(el.children).forEach(function(c,i){ if(v[i]) c.classList.add('on'); else c.classList.remove('on'); }); return; }
+    if(el.classList.contains('water-row') && Array.isArray(v)){ Array.from(el.children).forEach(function(c,i){ if(v[i]) c.classList.add('on'); else c.classList.remove('on'); }); return; }
+    if(el.classList.contains('mood-row') && Array.isArray(v)){ Array.from(el.children).forEach(function(c,i){ if(v[i]) c.classList.add('active'); else c.classList.remove('active'); }); return; }
+    if(el.textContent !== v) el.textContent = v;
+  }
+
+  function dumpAll(){
+    var o = {};
+    document.querySelectorAll('[data-key]').forEach(function(el){ o[el.getAttribute('data-key')] = readEl(el); });
+    return o;
+  }
+
+  function clearAllFieldsDomOnly(){
+    document.querySelectorAll('[data-key]').forEach(function(el){
+      var k = el.getAttribute('data-key');
+      if(k === 'cover.title') { el.textContent = DEFAULT_COVER_TITLE; }
+      else if(k === 'cover.tag') { el.textContent = DEFAULT_COVER_TAG; }
+      else if(el.tagName==='INPUT'){ if(el.type==='checkbox') el.checked=false; else el.value=''; }
+      else if(el.tagName==='TEXTAREA'){ el.value=''; }
+      else if(el.classList.contains('pips') || el.classList.contains('water-row')){ Array.from(el.children).forEach(function(c){ c.classList.remove('on'); }); }
+      else if(el.classList.contains('mood-row')){ Array.from(el.children).forEach(function(c){ c.classList.remove('active'); }); }
+      else { el.textContent = ''; }
+    });
+    state = {};
+  }
+
+  function clearAllFields(){
+    clearTimeout(t);
+    saving = false;
+    clearAllFieldsDomOnly();
+    if(activeWeekId === 'current'){
+      try{ localStorage.removeItem(KEY); }catch(_){}
+    } else {
+      var arr = loadArchive();
+      var idx = arr.findIndex(function(w){ return w.id === activeWeekId; });
+      if(idx >= 0){
+        arr[idx].data = {};
+        saveArchive(arr);
+      }
+    }
+  }
+
+  function generateDefaultWeekName(){
+    var now = new Date();
+    var months = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+    var two = function(n){ return n < 10 ? '0' + n : '' + n; };
+    return 'Hafta (' + two(now.getDate()) + ' ' + months[now.getMonth()] + ' ' + now.getFullYear() + ')';
+  }
+
+  function loadActiveWeek(){
+    try{
+      loadActiveId();
+      if(activeWeekId === 'current'){
+        var raw = localStorage.getItem(KEY);
+        state = raw ? (JSON.parse(raw) || {}) : {};
+        if(hasAnyData(state)){
+          var newEntry = archiveWeek(state, generateDefaultWeekName());
+          activeWeekId = newEntry.id;
+          saveActiveId(activeWeekId);
+        }
+      } else {
+        var arr = loadArchive();
+        var entry = arr.find(function(w){ return w.id === activeWeekId; });
+        if(entry && entry.data){
+          state = entry.data;
+        } else {
+          saveActiveId('current');
+          var raw2 = localStorage.getItem(KEY);
+          state = raw2 ? (JSON.parse(raw2) || {}) : {};
+          if(hasAnyData(state)){
+            var newEntry2 = archiveWeek(state, generateDefaultWeekName());
+            activeWeekId = newEntry2.id;
+            saveActiveId(activeWeekId);
+          }
+        }
+      }
+      document.querySelectorAll('[data-key]').forEach(function(el){
+        var k = el.getAttribute('data-key');
+        if(state[k] !== undefined) writeEl(el, state[k]);
+        else {
+          if(k === 'cover.title') writeEl(el, DEFAULT_COVER_TITLE);
+          else if(k === 'cover.tag') writeEl(el, DEFAULT_COVER_TAG);
+        }
+      });
+      updateActiveWeekBadge();
+    }catch(e){}
+  }
+
+  function switchActiveWeek(weekId){
+    clearTimeout(t);
+    if(saving) flush();
+    saveActiveId(weekId);
+    clearAllFieldsDomOnly();
+    loadActiveWeek();
+  }
+
+  function flush(){
+    try{
+      if(activeWeekId === 'current'){
+        if(hasAnyData(state)){
+          var newEntry = archiveWeek(state, generateDefaultWeekName());
+          activeWeekId = newEntry.id;
+          saveActiveId(activeWeekId);
+          updateActiveWeekBadge();
+        } else {
+          localStorage.setItem(KEY, JSON.stringify(state));
+        }
+      } else {
+        var arr = loadArchive();
+        var idx = arr.findIndex(function(w){ return w.id === activeWeekId; });
+        if(idx >= 0){
+          arr[idx].data = state;
+          arr[idx].savedAt = new Date().toISOString();
+          saveArchive(arr);
+        } else {
+          if(hasAnyData(state)){
+            var newEntry2 = archiveWeek(state, generateDefaultWeekName());
+            activeWeekId = newEntry2.id;
+            saveActiveId(activeWeekId);
+            updateActiveWeekBadge();
+          } else {
+            localStorage.setItem(KEY, JSON.stringify(state));
+          }
+        }
+      }
+      var s = document.getElementById('savedTag');
+      if(s) s.textContent = '✓ Saved ' + new Date().toLocaleTimeString();
+    }catch(e){}
+    saving = false;
+  }
+
+  function queue(){
+    var s = document.getElementById('savedTag');
+    if(s && !saving){ s.textContent = 'Saving…'; saving = true; }
+    clearTimeout(t);
+    t = setTimeout(flush, 800);
+  }
+
+  function loadArchive(){
+    try{
+      var raw = localStorage.getItem(ARCHIVE_KEY);
+      if(!raw) return [];
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr : [];
+    }catch(_){ return []; }
+  }
+
+  function saveArchive(arr){
+    try{ localStorage.setItem(ARCHIVE_KEY, JSON.stringify(arr)); }catch(_){}
+  }
+
+  function hasAnyData(data){
+    if(!data) return false;
+    for(var k in data){
+      var v = data[k];
+      if(v === undefined || v === null) continue;
+      if(k === 'cover.title' && String(v).trim() === DEFAULT_COVER_TITLE) continue;
+      if(k === 'cover.tag' && String(v).trim() === DEFAULT_COVER_TAG) continue;
+      if(Array.isArray(v)){ if(v.some(function(x){return x})) return true; }
+      else if(typeof v === 'boolean'){ if(v) return true; }
+      else if(String(v).trim() !== '') return true;
+    }
+    return false;
+  }
+
+  function isSystemEntry(name){
+    return typeof name === 'string' && name.indexOf('Auto-saved') === 0;
+  }
+
+  function archiveWeek(data, customName){
+    var arr = loadArchive();
+    var now = new Date();
+    var two = function(n){ return n<10?'0'+n:''+n; };
+    var dstr = now.getFullYear() + '-' + two(now.getMonth()+1) + '-' + two(now.getDate())
+      + ' ' + two(now.getHours()) + ':' + two(now.getMinutes());
+    var isSystem = customName && customName.indexOf('Auto-saved') === 0;
+
+    var entry = {
+      id: 'w_' + now.getTime() + '_' + Math.floor(Math.random()*1000),
+      name: customName || generateDefaultWeekName(),
+      savedAt: now.toISOString(),
+      savedAtLabel: dstr,
+      isSystem: !!isSystem,
+      data: data || {}
+    };
+    arr.unshift(entry);
+    saveArchive(arr);
+    return entry;
+  }
+
+  document.addEventListener('input', function(e){
+    var el = e.target && e.target.closest ? e.target.closest('[data-key]') : null;
+    if(!el) return;
+    state[el.getAttribute('data-key')] = readEl(el);
+    queue();
+  }, true);
+
+  document.addEventListener('change', function(e){
+    var el = e.target && e.target.closest ? e.target.closest('[data-key]') : null;
+    if(!el) return;
+    state[el.getAttribute('data-key')] = readEl(el);
+    queue();
+  });
+
+  document.addEventListener('click', function(e){
+    var p = e.target.closest && e.target.closest('.pip');
+    if(p){ p.classList.toggle('on'); var pips=p.parentElement; var k=pips&&pips.getAttribute('data-key'); if(k){ state[k]=readEl(pips); queue(); } return; }
+    var g = e.target.closest && e.target.closest('.glass');
+    if(g){ g.classList.toggle('on'); var row=g.parentElement; var wk=row&&row.getAttribute('data-key'); if(wk){ state[wk]=readEl(row); queue(); } return; }
+    var m = e.target.closest && e.target.closest('.mood');
+    if(m){ var row2=m.parentElement; Array.from(row2.children).forEach(function(c){c.classList.remove('active')}); m.classList.add('active'); var mk=row2.getAttribute('data-key'); if(mk){ state[mk]=readEl(row2); queue(); } return; }
+  });
+
+  document.getElementById('btnNewWeek').addEventListener('click', function(){
+    clearTimeout(t);
+    if(saving) flush();
+    var suggested = generateDefaultWeekName();
+    var name = prompt('Name your new week document:', suggested);
+    if(name === null) return;
+    name = name.trim() || suggested;
+    
+    var newEntry = archiveWeek({}, name);
+    switchActiveWeek(newEntry.id);
+    
+    window.scrollTo({top:0, behavior:'smooth'});
+    var s = document.getElementById('savedTag');
+    if(s) s.textContent = '✓ New week created';
+    updateBackupTag();
+  });
+
+  // ── ARCHIVE MODAL ─────────────────────────────────────────────
+  var modal = document.getElementById('archiveModal');
+  var list = document.getElementById('archiveList');
+
+  function renderArchive(){
+    var arr = loadArchive();
+    if(arr.length === 0){
+      list.innerHTML = '<div class="archive-empty"><span class="big">📭</span>No saved weeks yet.<br><small>Click <b>📅 New Week</b> to create a new week.</small></div>';
+      return;
+    }
+    var userEntries = arr.filter(function(w){ return !isSystemEntry(w.name); });
+    var sysEntries = arr.filter(function(w){ return isSystemEntry(w.name); });
+
+    function renderItem(w){
+      var dataCount = hasAnyData(w.data) ? 'with entries' : 'empty';
+      var safeName = escapeHtml(w.name||'Untitled');
+      var safeDate = escapeHtml(w.savedAtLabel||'');
+      var safeId = escapeHtml(w.id||'');
+      var isActive = w.id === activeWeekId;
+      var cls = isSystemEntry(w.name) ? 'archive-item system' : 'archive-item';
+      return '<div class="'+cls+'" data-id="'+safeId+'">'
+        + '<div class="archive-item-h">'
+        +   '<div>'
+        +     '<div class="archive-item-name">📅 '+safeName+(isActive ? ' <span style="font-size:11px;background:var(--primary);color:white;padding:2px 8px;border-radius:999px;margin-left:6px;">Editing</span>' : '')+'</div>'
+        +     '<div class="archive-item-meta">Saved: '+safeDate+' · '+dataCount+'</div>'
+        +   '</div>'
+        + '</div>'
+        + '<div class="archive-item-actions">'
+        +   '<button type="button" class="restore" data-act="open">'+(isActive ? '📌 Open' : '📂 Open & Edit')+'</button>'
+        +   '<button type="button" class="view" data-act="view">👁 View</button>'
+        +   '<button type="button" data-act="rename">✎ Rename</button>'
+        +   '<button type="button" class="danger" data-act="delete">🗑 Delete</button>'
+        + '</div>'
+        + '</div>';
+    }
+
+    var html = '';
+    if(userEntries.length){
+      html += '<div class="archive-section-title">📚 Your weeks <span class="count">('+userEntries.length+')</span></div>';
+      html += userEntries.map(renderItem).join('');
+    }
+    if(sysEntries.length){
+      html += '<div class="archive-section-title system">⚙️ Auto-saved <span class="count">('+sysEntries.length+')</span></div>';
+      html += sysEntries.map(renderItem).join('');
+      html += '<button type="button" class="clear-autosaves" id="clearAutosaves">🗑 Clear all auto-saves</button>';
+    }
+    list.innerHTML = html;
+
+    var ca = document.getElementById('clearAutosaves');
+    if(ca){
+      ca.addEventListener('click', function(){
+        if(!confirm('Delete all auto-saved backups?\n\nYour named weeks will stay safe.')) return;
+        var arr2 = loadArchive().filter(function(w){ return !isSystemEntry(w.name); });
+        saveArchive(arr2);
+        renderArchive();
+      });
+    }
+  }
+
+  function openArchive(){ renderArchive(); modal.classList.add('show'); }
+  function closeArchive(){ modal.classList.remove('show'); }
+  document.getElementById('btnArchive').addEventListener('click', openArchive);
+  document.getElementById('closeArchive').addEventListener('click', closeArchive);
+  document.getElementById('closeArchive2').addEventListener('click', closeArchive);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeArchive(); });
+
+  list.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('button[data-act]');
+    if(!btn) return;
+    var item = btn.closest('.archive-item');
+    if(!item) return;
+    var id = item.getAttribute('data-id');
+    var arr = loadArchive();
+    var idx = arr.findIndex(function(w){ return w.id === id; });
+    if(idx < 0) return;
+    var act = btn.getAttribute('data-act');
+    var target = arr[idx];
+
+    if(act === 'open'){
+      switchActiveWeek(target.id);
+      closeArchive();
+    } else if(act === 'view'){
+      openView(target);
+    } else if(act === 'rename'){
+      var nv = prompt('New name for this week:', arr[idx].name);
+      if(nv === null) return;
+      nv = nv.trim();
+      if(!nv) return;
+      arr[idx].name = nv;
+      if(nv.indexOf('Auto-saved') !== 0) delete arr[idx].isSystem;
+      saveArchive(arr);
+      renderArchive();
+      updateActiveWeekBadge();
+    } else if(act === 'delete'){
+      if(!confirm('Delete this week permanently?\n\n"' + arr[idx].name + '" will be lost.')) return;
+      arr.splice(idx, 1);
+      saveArchive(arr);
+      if(id === activeWeekId){
+        switchActiveWeek('current');
+      }
+      renderArchive();
+    }
+  });
+
+  // ── VIEW MODAL ────────────────────────────────────────────────
+  var viewModal = document.getElementById('viewModal');
+  var viewTitle = document.getElementById('viewTitle');
+  var viewTabs = document.getElementById('viewTabs');
+  var viewContent = document.getElementById('viewContent');
+  var viewRestoreLabel = document.getElementById('viewRestoreLabel');
+  var viewRestoreBtn = document.getElementById('viewRestoreBtn');
+  var currentViewTarget = null;
+
+  var DAYS = [
+    { id:'mon', emoji:'🌸', label:'Mon' },
+    { id:'tue', emoji:'💙', label:'Tue' },
+    { id:'wed', emoji:'🌿', label:'Wed' },
+    { id:'thu', emoji:'💜', label:'Thu' },
+    { id:'fri', emoji:'🍑', label:'Fri' },
+    { id:'sat', emoji:'🌻', label:'Sat' },
+    { id:'sun', emoji:'🍓', label:'Sun' }
+  ];
+
+  var MOOD_EMOJIS = ['😞', '😐', '🙂', '😄', '🤩'];
+
+  function hasDayData(data, dayId){
+    if(!data) return false;
+    var keys = [
+      dayId+'.p1.t', dayId+'.p2.t', dayId+'.p3.t',
+      dayId+'.notes', dayId+'.mood.note', dayId+'.gratitude', dayId+'.cozy',
+      dayId+'.hab1.n', dayId+'.hab2.n', dayId+'.hab3.n'
+    ];
+    for(var h=6; h<=21; h++){ keys.push(dayId+'.h'+h); }
+    var textHasData = keys.some(function(k){ return String(data[k]||'').trim() !== ''; });
+    if(textHasData) return true;
+    if(data[dayId+'.p1.d'] || data[dayId+'.p2.d'] || data[dayId+'.p3.d']) return true;
+    if(Array.isArray(data[dayId+'.mood']) && data[dayId+'.mood'].some(Boolean)) return true;
+    if(Array.isArray(data[dayId+'.water']) && data[dayId+'.water'].some(Boolean)) return true;
+    if(Array.isArray(data[dayId+'.hab1.d']) && data[dayId+'.hab1.d'].some(Boolean)) return true;
+    if(Array.isArray(data[dayId+'.hab2.d']) && data[dayId+'.hab2.d'].some(Boolean)) return true;
+    if(Array.isArray(data[dayId+'.hab3.d']) && data[dayId+'.hab3.d'].some(Boolean)) return true;
+    return false;
+  }
+
+  function renderDayView(data, dayId){
+    var blocks = [];
+
+    // Priorities
+    var pList = [];
+    [1, 2, 3].forEach(function(num){
+      var t = String(data[dayId+'.p'+num+'.t']||'').trim();
+      var d = !!data[dayId+'.p'+num+'.d'];
+      if(t || d){
+        pList.push((d ? '☑️ ' : '🔲 ') + (t ? escapeHtml(t) : 'Priority ' + num));
+      }
+    });
+    if(pList.length){
+      blocks.push('<div class="view-box"><h4>⭐ Priorities</h4><div class="value">'+pList.join('<br>')+'</div></div>');
+    }
+
+    // Mood
+    var moodArr = Array.isArray(data[dayId+'.mood']) ? data[dayId+'.mood'] : [];
+    var activeMoodIdx = moodArr.indexOf(true);
+    var moodNote = String(data[dayId+'.mood.note']||'').trim();
+    if(activeMoodIdx >= 0 || moodNote){
+      var moodStr = activeMoodIdx >= 0 ? MOOD_EMOJIS[activeMoodIdx] + ' ' : '';
+      if(moodNote) moodStr += escapeHtml(moodNote);
+      blocks.push('<div class="view-box"><h4>💗 Mood</h4><div class="value">'+moodStr+'</div></div>');
+    }
+
+    // Water
+    var waterArr = Array.isArray(data[dayId+'.water']) ? data[dayId+'.water'] : [];
+    var waterCount = waterArr.filter(Boolean).length;
+    if(waterCount > 0){
+      blocks.push('<div class="view-box"><h4>💧 Water Intake</h4><div class="value">💧 '+waterCount+' / 8 glasses</div></div>');
+    }
+
+    // Habits
+    var habList = [];
+    [1, 2, 3].forEach(function(num){
+      var name = String(data[dayId+'.hab'+num+'.n']||'').trim();
+      var pips = Array.isArray(data[dayId+'.hab'+num+'.d']) ? data[dayId+'.hab'+num+'.d'] : [];
+      var count = pips.filter(Boolean).length;
+      if(name || count > 0){
+        habList.push('🌿 ' + (name ? escapeHtml(name) : 'Habit ' + num) + ': ' + count + '/7 completed');
+      }
+    });
+    if(habList.length){
+      blocks.push('<div class="view-box"><h4>🌿 Mini Habits</h4><div class="value">'+habList.join('<br>')+'</div></div>');
+    }
+
+    // Hourly Schedule
+    var hrList = [];
+    for(var h=6; h<=21; h++){
+      var val = String(data[dayId+'.h'+h]||'').trim();
+      if(val){
+        hrList.push('<b>'+h+':00</b> - '+escapeHtml(val));
+      }
+    }
+    if(hrList.length){
+      blocks.push('<div class="view-box"><h4>🕐 Schedule</h4><div class="value">'+hrList.join('<br>')+'</div></div>');
+    }
+
+    // Notes, Gratitude, Cozy
+    if(String(data[dayId+'.notes']||'').trim()){
+      blocks.push('<div class="view-box"><h4>📝 Notes & Thoughts</h4><div class="value">'+escapeHtml(data[dayId+'.notes'])+'</div></div>');
+    }
+    if(String(data[dayId+'.gratitude']||'').trim()){
+      blocks.push('<div class="view-box"><h4>🌸 Gratitude</h4><div class="value">'+escapeHtml(data[dayId+'.gratitude'])+'</div></div>');
+    }
+    if(String(data[dayId+'.cozy']||'').trim()){
+      blocks.push('<div class="view-box"><h4>🍰 Cozy Moment</h4><div class="value">'+escapeHtml(data[dayId+'.cozy'])+'</div></div>');
+    }
+
+    return blocks.length ? blocks.join('') : '<div class="view-empty">Nothing recorded for this day.</div>';
+  }
+
+  function openView(target){
+    renderView(target);
+  }
+
+  function renderView(target){
+    currentViewTarget = target;
+    viewTitle.textContent = '👁 ' + target.name;
+    var data = target.data || {};
+    var firstWithData = DAYS[0].id;
+    for(var i=0; i<DAYS.length; i++){
+      if(hasDayData(data, DAYS[i].id)){
+        firstWithData = DAYS[i].id;
+        break;
+      }
+    }
+
+    viewTabs.innerHTML = DAYS.map(function(d){
+      return '<button type="button" class="view-tab'+(d.id===firstWithData?' active':'')+'" data-day="'+d.id+'">'+d.emoji+' '+d.label+'</button>';
+    }).join('');
+
+    viewContent.innerHTML = DAYS.map(function(d){
+      var inner = renderDayView(data, d.id);
+      return '<div class="view-day'+(d.id===firstWithData?' active':'')+'" data-day="'+d.id+'">'+inner+'</div>';
+    }).join('');
+
+    viewRestoreLabel.textContent = 'Saved: ' + (target.savedAtLabel||'');
+    viewRestoreBtn.textContent = '📂 Open & Edit this week';
+
+    viewModal.classList.add('show');
+  }
+
+  viewTabs.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.view-tab');
+    if(!btn) return;
+    var d = btn.getAttribute('data-day');
+    viewTabs.querySelectorAll('.view-tab').forEach(function(t){ t.classList.toggle('active', t===btn); });
+    viewContent.querySelectorAll('.view-day').forEach(function(c){ c.classList.toggle('active', c.getAttribute('data-day')===d); });
+  });
+
+  function closeView(){ viewModal.classList.remove('show'); currentViewTarget = null; }
+  document.getElementById('closeView').addEventListener('click', closeView);
+  document.getElementById('viewCloseBtn').addEventListener('click', closeView);
+  viewModal.addEventListener('click', function(e){ if(e.target === viewModal) closeView(); });
+
+  viewRestoreBtn.addEventListener('click', function(){
+    if(!currentViewTarget) return;
+    var t = currentViewTarget;
+    closeView();
+    closeArchive();
+    switchActiveWeek(t.id);
+  });
+
+  // ── EXPORT / IMPORT ───────────────────────────────────────────
+  function twoDigit(n){ return n < 10 ? '0'+n : ''+n; }
+  function timestamp(){
+    var d = new Date();
+    return d.getFullYear() + '-' + twoDigit(d.getMonth()+1) + '-' + twoDigit(d.getDate())
+      + '_' + twoDigit(d.getHours()) + '-' + twoDigit(d.getMinutes());
+  }
+  document.getElementById('btnExport').addEventListener('click', function(){
+    clearTimeout(t);
+    if(saving) flush();
+    var payload = {
+      appVersion: APP_VERSION,
+      version: 2,
+      exportedAt: new Date().toISOString(),
+      activeWeekId: activeWeekId,
+      current: dumpAll(),
+      archive: loadArchive()
+    };
+    var b = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = 'chibi-kawaii-planner-' + timestamp() + '.json';
+    a.click();
+    try{ localStorage.setItem(BACKUP_KEY, new Date().toISOString()); }catch(_){}
+    updateBackupTag();
+  });
+
+  document.getElementById('btnExportCsv').addEventListener('click', function(){
+    clearTimeout(t);
+    if(saving) flush();
+    var data = dumpAll();
+    var activeName = 'Live Week';
+    if(activeWeekId !== 'current'){
+      var curW = loadArchive().find(function(w){ return w.id === activeWeekId; });
+      if(curW) activeName = curW.name;
+    }
+    var rows = [['Metadata_Key', 'Metadata_Value'], ['Document_Name', activeName], ['Exported_At', new Date().toLocaleString()], [], ['Key', 'Value']];
+    Object.keys(data).sort().forEach(function(k){
+      var v = data[k];
+      if(Array.isArray(v)) v = v.map(function(x){return x ? '1' : '0'}).join('|');
+      else if(typeof v === 'boolean') v = v ? '1' : '0';
+      rows.push([k, v === undefined || v === null ? '' : String(v)]);
+    });
+    var csv = rows.map(function(r){
+      return r.map(function(cell){
+        var s = String(cell);
+        if(s.indexOf('"') >= 0 || s.indexOf(',') >= 0 || s.indexOf('\n') >= 0)
+          s = '"' + s.replace(/"/g, '""') + '"';
+        return s;
+      }).join(',');
+    }).join('\n');
+    var b = new Blob(['\ufeff' + csv], {type:'text/csv;charset=utf-8;'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = 'chibi-kawaii-planner-' + timestamp() + '.csv';
+    a.click();
+  });
+
+  document.getElementById('btnImport').addEventListener('change', function(e){
+    var f = e.target.files[0];
+    if(!f) return;
+    var currentData = dumpAll();
+    var hasData = hasAnyData(currentData);
+    if(hasData){
+      if(!confirm('⚠ This will OVERWRITE your current planner data AND your archive on this device.\n\nContinue?')){
+        e.target.value = '';
+        return;
+      }
+    }
+    var r = new FileReader();
+    r.onload = function(){
+      try{
+        var d = JSON.parse(r.result);
+        if(typeof d !== 'object' || d === null || Array.isArray(d)) throw new Error('Invalid');
+        if(d.current || d.archive){
+          var cur = d.current || {};
+          var arc = Array.isArray(d.archive) ? d.archive : [];
+          localStorage.setItem(KEY, JSON.stringify(cur));
+          localStorage.setItem(ARCHIVE_KEY, JSON.stringify(arc));
+          if(d.activeWeekId && arc.some(function(w){ return w.id === d.activeWeekId; })){
+            localStorage.setItem(ACTIVE_ID_KEY, d.activeWeekId);
+          } else if(arc.length > 0){
+            localStorage.setItem(ACTIVE_ID_KEY, arc[0].id);
+          }
+        } else {
+          localStorage.setItem(KEY, JSON.stringify(d));
+          localStorage.setItem(ACTIVE_ID_KEY, 'current');
+        }
+        try{ localStorage.setItem(VERSION_KEY, APP_VERSION); }catch(_){}
+        checkVersionAndMigrate();
+        alert('✓ Backup imported successfully!\n\nThe page will reload now.');
+        location.reload();
+      }catch(err){
+        alert('❌ Invalid backup file.\n\nMake sure you selected a .json file exported from this planner.');
+        e.target.value = '';
+      }
+    };
+    r.readAsText(f);
+  });
+
+  document.getElementById('btnPrint').addEventListener('click', function(){ window.print(); });
+
+  document.getElementById('btnClear').addEventListener('click', function(){
+    if(!confirm('⚠ Clear ALL planner data on this device?\n\nThis will remove your current week AND all archived weeks.\n\nThis cannot be undone.')) return;
+    if(!confirm('Are you absolutely sure? Everything will be deleted.')) return;
+    clearTimeout(t);
+    saving = false;
+    localStorage.removeItem(KEY);
+    localStorage.removeItem(ARCHIVE_KEY);
+    localStorage.removeItem(VERSION_KEY);
+    localStorage.removeItem(ACTIVE_ID_KEY);
+    localStorage.removeItem(DECO_KEY);
+    localStorage.removeItem(BACKUP_KEY);
+    localStorage.removeItem(LAST_REMINDER_KEY);
+    activeWeekId = 'current';
+    clearAllFieldsDomOnly();
+    updateActiveWeekBadge();
+    location.reload();
+  });
+
+  function updateBackupTag(){
+    var tag = document.getElementById('backupTag');
+    if(!tag) return;
+    var last = localStorage.getItem(BACKUP_KEY);
+    if(!last){ tag.textContent = '· No backup yet'; return; }
+    var diff = Date.now() - new Date(last).getTime();
+    var days = Math.floor(diff / 86400000);
+    if(days === 0) tag.textContent = '· Backup: today';
+    else if(days === 1) tag.textContent = '· Backup: yesterday';
+    else tag.textContent = '· Backup: ' + days + 'd ago';
+  }
+
+  function checkBackupReminder(){
+    var last = localStorage.getItem(BACKUP_KEY);
+    var hasData = hasAnyData(dumpAll());
+    if(!hasData) return;
+    var lastReminder = localStorage.getItem(LAST_REMINDER_KEY);
+    var now = Date.now();
+    var needsReminder = !last || (now - new Date(last).getTime() > 7 * 86400000);
+    var canNag = !lastReminder || (now - new Date(lastReminder).getTime() > 3 * 86400000);
+    if(needsReminder && canNag){
+      var msg = last
+        ? '💾 It has been over a week since your last backup.\n\nClick OK to export a fresh backup now (includes all archived weeks), or Cancel to skip.'
+        : '💾 You have planner data but no backup yet.\n\nClick OK to export a backup now, or Cancel to skip.';
+      if(confirm(msg)){ document.getElementById('btnExport').click(); }
+      try{ localStorage.setItem(LAST_REMINDER_KEY, new Date().toISOString()); }catch(_){}
+    }
+  }
+
+  window.addEventListener('beforeunload', function(){
+    if(saving){ try{ flush(); }catch(e){} }
+  });
+
+  // ── Add Art ───────────────────────────────────────────────────
+  var DECO_LABEL = {
+    sakura:  '🌸 Sakura petals',
+    sparkles:'✨ Sparkles',
+    paws:    '🐾 Paw prints',
+    clouds:  '☁️ Soft clouds',
+    hearts:  '💕 Floating hearts'
+  };
+  var deco = { sakura:false, sparkles:false, paws:false, clouds:false, hearts:false };
+  try {
+    var rawD = localStorage.getItem(DECO_KEY);
+    if(rawD) deco = Object.assign(deco, JSON.parse(rawD)||{});
+  } catch(_){}
+
+  function applyDeco(){
+    Object.keys(deco).forEach(function(name){
+      var on = !!deco[name];
+      document.querySelectorAll('[data-deco="'+name+'"]').forEach(function(el){
+        if(on) el.removeAttribute('hidden');
+        else el.setAttribute('hidden','');
+      });
+    });
+  }
+  function saveDeco(){
+    try{ localStorage.setItem(DECO_KEY, JSON.stringify(deco)); }catch(_){}
+  }
+  applyDeco();
+
+  var btnArt = document.getElementById('btnArt');
+  var menuArt = document.getElementById('artMenu');
+
+  if(btnArt && menuArt){
+    function updateArtMenuHTML(){
+      var allOn = Object.keys(DECO_LABEL).every(function(k){ return !!deco[k]; });
+      menuArt.innerHTML = '<div class="menu-title">Decorations</div>'
+        + Object.keys(DECO_LABEL).map(function(k){
+            return '<label>'
+              + '<input type="checkbox" data-deco-toggle="'+k+'" '+(deco[k]?'checked':'')+'/>'
+              + '<span>'+DECO_LABEL[k]+'</span>'
+              + '</label>';
+          }).join('')
+        + '<div class="menu-title" style="margin-top:4px;border-top:1px solid var(--border);padding-top:8px;">Quick actions</div>'
+        + '<label><input type="checkbox" id="decoAllOn" '+(allOn?'checked':'')+'/><span>✓ Enable all</span></label>';
+    }
+    updateArtMenuHTML();
+
+    function positionMenu(){
+      var r = btnArt.getBoundingClientRect();
+      menuArt.style.top = (r.bottom + 8) + 'px';
+      menuArt.style.right = Math.max(8, (window.innerWidth - r.right)) + 'px';
+      menuArt.style.left = 'auto';
+    }
+
+    btnArt.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(menuArt.classList.contains('show')) menuArt.classList.remove('show');
+      else { updateArtMenuHTML(); positionMenu(); menuArt.classList.add('show'); }
+    });
+
+    window.addEventListener('scroll', function(){ menuArt.classList.remove('show'); }, true);
+    window.addEventListener('resize', function(){ menuArt.classList.remove('show'); });
+
+    document.addEventListener('click', function(e){
+      if(menuArt.classList.contains('show') && !menuArt.contains(e.target) && e.target !== btnArt){
+        menuArt.classList.remove('show');
+      }
+    });
+
+    menuArt.addEventListener('change', function(e){
+      var t = e.target;
+      if(!t || !t.getAttribute) return;
+      if(t.id === 'decoAllOn'){
+        var on = !!t.checked;
+        Object.keys(deco).forEach(function(k){ deco[k] = on; });
+        saveDeco();
+        applyDeco();
+        menuArt.querySelectorAll('input[data-deco-toggle]').forEach(function(cb){ cb.checked = on; });
+        return;
+      }
+      var k = t.getAttribute('data-deco-toggle');
+      if(!k) return;
+      deco[k] = !!t.checked;
+      saveDeco();
+      applyDeco();
+      var allOn = Object.keys(deco).every(function(x){ return deco[x]; });
+      var allOff = Object.keys(deco).every(function(x){ return !deco[x]; });
+      var master = document.getElementById('decoAllOn');
+      if(master){ master.checked = allOn; master.indeterminate = !allOn && !allOff; }
+    });
+  }
+
+  checkVersionAndMigrate();
+  loadActiveWeek();
+  updateBackupTag();
+  setTimeout(checkBackupReminder, 2500);
+
+})();</script></body></html>
