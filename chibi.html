@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover"/><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><title>Chibi Kawaii Planner</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/><style>:root{color-scheme:light;--primary:hsl(340 80% 72%);--accent:hsl(190 75% 70%);--bg:hsl(345 60% 98%);--fg:hsl(330 25% 22%);--muted:hsl(330 10% 55%);--border:hsl(340 40% 90%);--card:hsl(0 0% 100%);--font-h:'Quicksand',-apple-system,sans-serif;--font-b:'Nunito',-apple-system,sans-serif;}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:var(--font-b);line-height:1.5;overflow-x:hidden}h1,h2,h3,h4,.kicker,.cover-year{font-family:var(--font-h);letter-spacing:.01em}.page{position:relative;overflow:hidden}.page-deco{position:absolute;inset:0;pointer-events:none;z-index:0}.page > *:not(.page-deco):not(.cover-bg-art){position:relative;z-index:1}.ornament-divider{display:flex;justify-content:center;margin:14px 0 18px;color:var(--accent);opacity:.7}.divider-svg{width:240px;height:16px}.cover-divider{margin:8px auto 18px}.cover-bg-art{position:absolute;top:-40px;right:-40px;width:280px;height:280px;color:var(--primary);opacity:.22;pointer-events:none;z-index:0}.cover-bg-art .hero-art{width:100%;height:100%}html,body{background:radial-gradient(1200px 800px at 10% -10%,color-mix(in srgb,var(--primary) 8%,transparent),transparent 60%),radial-gradient(900px 700px at 110% 110%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 60%),var(--bg) !important}
-.toolbar{position:sticky;top:0;z-index:50;display:flex;gap:6px;align-items:center;padding:8px 12px;background:var(--card);border-bottom:1px solid var(--border);flex-wrap:wrap;overflow-x:auto}.toolbar h1{font-size:13px;margin:0;flex:1;font-weight:700;min-width:140px;white-space:nowrap}.toolbar button,.toolbar label.btn{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--fg);cursor:pointer;font-size:11px;font-weight:600;white-space:nowrap;font-family:inherit}.toolbar button.primary{background:var(--primary);color:white;border-color:var(--primary)}.toolbar .saved{font-size:10px;color:var(--muted);white-space:nowrap}
-main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);border-radius:16px;padding:28px;margin:16px 0;border:1px solid var(--border);page-break-after:always;min-height:80vh}.cover{text-align:center;background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 12%,var(--card)),var(--card))}.cover-inner{padding:40px 24px}.kicker{display:inline-block;padding:4px 14px;border-radius:999px;background:color-mix(in srgb,var(--primary) 15%,transparent);color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.cover h1{font-size:clamp(32px,7vw,72px);margin:18px 0 8px;line-height:1.05;outline:none}.cover-tag{color:var(--muted);margin:18px auto 24px;max-width:520px;outline:none}.xp-bar{max-width:320px;height:14px;margin:12px auto;background:color-mix(in srgb,var(--primary) 12%,transparent);border-radius:999px;position:relative;overflow:hidden}.xp-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:999px}.xp-bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--fg)}.cover-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:32px}.cover-nav a{padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--border);color:var(--fg);font-size:12px;text-decoration:none;font-weight:600}.cover-nav a:hover{background:var(--primary);color:white;border-color:var(--primary)}
-.daily-page{background:var(--card);border-radius:16px;padding:24px;margin:16px 0;border:1px solid var(--border);page-break-after:always;position:relative;overflow:hidden}.daily-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:2px dashed var(--border);margin-bottom:18px;gap:8px;flex-wrap:wrap}.daily-header h2{margin:0;font-size:24px;display:flex;align-items:center;gap:10px}.chibi-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;background:color-mix(in srgb,var(--primary) 20%,var(--card));border:2px solid var(--primary);flex-shrink:0}.daily-date{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em}.daily-body{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}@media(max-width:750px){.daily-body{grid-template-columns:1fr}.daily-header h2{font-size:20px}.daily-page{padding:16px;margin:10px 0}}.daily-col{display:flex;flex-direction:column;gap:12px}.daily-box{border:1.5px solid var(--border);border-radius:14px;padding:12px;background:color-mix(in srgb,var(--primary) 3%,var(--card))}.daily-box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);font-weight:800;display:flex;align-items:center;gap:5px}.daily-box h4 .emoji{font-size:15px}.daily-box textarea{width:100%;min-height:70px;border:none;background:transparent;font:inherit;color:var(--fg);resize:vertical;outline:none;font-size:14px}.daily-box textarea::placeholder{color:var(--muted);font-style:italic}
-.priority-list{display:flex;flex-direction:column;gap:6px}.priority-item{display:flex;gap:8px;align-items:center;padding:6px 8px;background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:8px;flex-wrap:wrap}.priority-item .num{font-weight:800;color:var(--primary);font-size:14px;min-width:18px;flex-shrink:0}.priority-item input[type=checkbox]{accent-color:var(--primary);flex-shrink:0;width:16px;height:16px}.priority-item .txt{flex:1;outline:none;font-size:14px;min-height:18px;min-width:100px}.priority-item .txt:empty::before{content:attr(data-placeholder);color:var(--muted)}
-.hourly{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:11px}@media(max-width:500px){.hourly{grid-template-columns:1fr}}.hourly .hr{display:flex;gap:6px;align-items:center;padding:2px 0}.hourly .hr .time{font-weight:700;color:var(--primary);min-width:44px;flex-shrink:0;font-size:11px}.hourly .hr .line{flex:1;border-bottom:1px dotted var(--border);min-height:18px;outline:none;font-size:12px}
-.mood-row{display:flex;gap:6px;justify-content:space-between;margin:6px 0}.mood-row .mood{font-size:24px;cursor:pointer;padding:4px;border-radius:8px;transition:.15s;filter:grayscale(1);opacity:.5;user-select:none;line-height:1}.mood-row .mood:hover{transform:scale(1.15)}.mood-row .mood.active{filter:none;opacity:1;background:color-mix(in srgb,var(--primary) 15%,transparent);transform:scale(1.1)}
-.water-row{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}.water-row .glass{width:22px;height:28px;border:1.5px solid var(--accent);border-radius:0 0 8px 8px;cursor:pointer;transition:.15s;user-select:none}.water-row .glass.on{background:linear-gradient(180deg,transparent 20%,var(--accent) 20%)}
-.habit-mini{display:flex;flex-direction:column;gap:6px}.habit-mini .h-row{display:flex;align-items:center;gap:8px;font-size:12px;flex-wrap:wrap}.habit-mini .h-row .h-name{flex:1;outline:none;min-height:18px;min-width:80px;font-size:14px}.habit-mini .h-row .h-name:empty::before{content:attr(data-placeholder);color:var(--muted)}.habit-mini .pips .pip{width:14px;height:14px}
-.pips{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}.pip{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--primary);cursor:pointer;user-select:none}.pip.on{background:var(--primary)}
-.chibi-scene{display:flex;justify-content:center;align-items:center;padding:10px 0}.chibi-scene svg{width:110px;height:110px}@media(max-width:500px){.chibi-scene svg{width:90px;height:90px}}
-#artMenu{position:fixed !important;top:auto;right:16px;min-width:250px;max-width:calc(100vw - 32px);background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:8px;box-shadow:0 16px 40px rgba(0,0,0,.22);z-index:9999;display:none}#artMenu.show{display:block}#artMenu label{display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;font-size:13px;font-weight:600;color:var(--fg);border-radius:8px;transition:background .15s}#artMenu label:hover{background:color-mix(in srgb,var(--primary) 10%,transparent)}#artMenu label input[type=checkbox]{accent-color:var(--primary);width:16px;height:16px;flex-shrink:0}#artMenu .menu-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:6px 12px 4px}@media(max-width:500px){#artMenu{right:8px;left:8px;min-width:auto}}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px)}.modal-overlay.show{display:flex}.modal{background:var(--card);border-radius:16px;max-width:640px;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border)}.modal-h{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}.modal-h h2{margin:0;font-size:18px;color:var(--primary)}.modal-h button{background:transparent;border:none;font-size:22px;cursor:pointer;color:var(--muted);padding:0;line-height:1;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}.modal-h button:hover{background:color-mix(in srgb,var(--primary) 10%,transparent)}.modal-body{padding:16px 20px;overflow-y:auto;flex:1}.modal-body p.hint{color:var(--muted);font-size:12px;margin:0 0 12px;font-style:italic}.modal-f{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.modal-f button{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:12px;font-weight:600;font-family:inherit}.modal-f button.primary{background:var(--primary);color:white;border-color:var(--primary)}
-.archive-section-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);margin:18px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}.archive-section-title:first-child{margin-top:0}.archive-section-title.system{color:var(--muted)}.archive-section-title .count{font-weight:600;font-size:10px;opacity:.7;margin-left:4px}
-.archive-item{border:1.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px;background:color-mix(in srgb,var(--primary) 3%,var(--card));display:flex;flex-direction:column;gap:8px}.archive-item.system{background:color-mix(in srgb,var(--muted) 6%,var(--card));border-color:color-mix(in srgb,var(--muted) 25%,var(--border));opacity:.85}.archive-item.system .archive-item-name{color:var(--muted)}.archive-item-h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}.archive-item-name{font-weight:700;color:var(--fg);font-size:14px;word-break:break-word}.archive-item-meta{font-size:11px;color:var(--muted);margin-top:2px}.archive-item-actions{display:flex;gap:6px;flex-wrap:wrap}.archive-item-actions button{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:11px;font-weight:600;font-family:inherit;color:var(--fg)}.archive-item-actions button:hover{transform:translateY(-1px)}.archive-item-actions button.view{background:var(--accent);color:white;border-color:var(--accent)}.archive-item-actions button.restore{background:var(--primary);color:white;border-color:var(--primary)}.archive-item-actions button.danger{color:hsl(0 65% 50%);border-color:hsl(0 65% 80%)}.archive-empty{text-align:center;padding:40px 20px;color:var(--muted)}.archive-empty .big{font-size:48px;display:block;margin-bottom:10px}.clear-autosaves{margin-top:8px;padding:6px 12px;font-size:11px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-family:inherit;color:hsl(0 65% 50%)}
-/* ── View Modal ── */
-.view-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:10px}.view-tab{padding:5px 10px;border-radius:999px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:11px;font-weight:700;font-family:inherit;color:var(--fg);white-space:nowrap}.view-tab.active{background:var(--primary);color:white;border-color:var(--primary)}.view-day{display:none}.view-day.active{display:block}.view-box{border:1.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px;background:color-mix(in srgb,var(--primary) 3%,var(--card))}.view-box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);font-weight:800;display:flex;align-items:center;gap:5px}.view-box .value{font-size:13px;line-height:1.5;color:var(--fg);white-space:pre-wrap;word-break:break-word}.view-box .value.empty{color:var(--muted);font-style:italic;opacity:.6}.view-empty{text-align:center;padding:40px 20px;color:var(--muted);font-style:italic}.view-restore-bar{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.view-restore-bar .label{font-size:12px;color:var(--muted)}.view-restore-bar button{padding:8px 16px;border-radius:999px;border:1px solid var(--primary);background:var(--primary);color:white;cursor:pointer;font-size:12px;font-weight:700;font-family:inherit}
+.toolbar{position:sticky;top:0;z-index:50;display:flex;gap:8px;align-items:center;padding:8px 16px;background:var(--card);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.toolbar-header{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;}
+.toolbar h1{font-size:14px;margin:0;font-weight:700;white-space:nowrap;}
+.toolbar .active-badge{padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;border:1.5px solid var(--primary);background:color-mix(in srgb,var(--primary) 15%,var(--card));color:var(--primary);display:inline-flex;align-items:center;gap:4px;white-space:nowrap;}
+.toolbar-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.toolbar button,.toolbar label.btn{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--fg);cursor:pointer;font-size:11px;font-weight:700;white-space:nowrap;font-family:inherit;}
+.toolbar button.primary{background:var(--primary);color:white;border-color:var(--primary);}
+.toolbar button.danger{color:hsl(0 65% 50%);border-color:hsl(0 65% 80%);}
+.toolbar .btn-more{display:none;}
+.tools-drawer{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-left:auto;}
+.drawer-group{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.drawer-meta{display:flex;gap:8px;align-items:center;font-size:11px;}
+.version-badge{background:var(--primary);color:white;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:0.05em;box-shadow:0 2px 6px rgba(0,0,0,0.1);display:inline-flex;align-items:center;gap:4px;}
+.saved{font-size:11px;color:var(--muted);white-space:nowrap;}
+
 @media print{
   @page{size:portrait;margin:8mm;}
   *{print-color-adjust:exact !important;-webkit-print-color-adjust:exact !important;}
@@ -24,11 +23,20 @@ main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);bo
   .toolbar,.cover-nav,.modal-overlay,#artMenu{display:none !important;}
   .page,.daily-page{margin:0 !important;padding:16px 20px !important;border:1.5px solid var(--border) !important;border-radius:12px !important;box-shadow:none !important;min-height:0 !important;height:98vh !important;max-height:98vh !important;page-break-after:always !important;break-after:page !important;page-break-inside:avoid !important;break-inside:avoid !important;box-sizing:border-box !important;overflow:hidden !important;}
 }
-@media(max-width:600px){
+@media(max-width:750px){
   main{padding:8px;}
-  .toolbar{padding:6px 8px;gap:4px;}
-  .toolbar h1{font-size:12px;min-width:100px;}
-  .toolbar button,.toolbar label.btn{padding:5px 8px;font-size:10px;}
+  .toolbar{padding:8px 10px;gap:6px;}
+  .toolbar-header{width:100%;justify-content:space-between;}
+  .toolbar h1{font-size:13px;}
+  .toolbar .active-badge{font-size:10px;padding:2px 8px;}
+  .toolbar .btn-more{display:inline-flex;align-items:center;gap:4px;}
+  .toolbar-actions{width:100%;justify-content:space-between;border-top:1px dashed var(--border);padding-top:6px;margin-top:2px;}
+  .toolbar-actions button{flex:1;text-align:center;padding:6px 4px;font-size:11px;}
+  .tools-drawer{display:none;width:100%;flex-direction:column;align-items:stretch;gap:8px;background:color-mix(in srgb,var(--primary) 5%,var(--card));padding:10px;border-radius:12px;border:1px solid var(--border);margin-top:4px;}
+  .tools-drawer.open{display:flex;}
+  .drawer-group{justify-content:space-between;}
+  .drawer-group button,.drawer-group label.btn{flex:1;text-align:center;padding:6px 4px;font-size:10px;}
+  .drawer-meta{justify-content:space-between;padding-top:6px;border-top:1px solid var(--border);}
   .page,.daily-page{padding:14px;border-radius:12px;margin:8px 0;}
   .cover-inner{padding:24px 12px;}
   .modal{max-height:92vh;border-radius:12px;}
@@ -41,19 +49,30 @@ main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);bo
 <body>
 
 <div class="toolbar">
-  <h1>🌸 Chibi Kawaii Planner</h1>
-  <span id="versionTag" style="background:var(--primary);color:white;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:0.05em;box-shadow:0 2px 6px rgba(0,0,0,0.1);display:inline-flex;align-items:center;gap:4px;">🏷️ v2.2.4</span>
-  <span id="activeWeekBadge" style="padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;border:1.5px solid var(--primary);background:color-mix(in srgb,var(--primary) 15%,var(--card));color:var(--primary);display:inline-flex;align-items:center;gap:4px;">📌 Live Week</span>
-  <span class="saved" id="savedTag">Auto-saves</span>
-  <span class="saved" id="backupTag" style="color:var(--muted)"></span>
-  <button id="btnNewWeek" class="primary" title="Create a new week document">📅 New Week</button>
-  <button id="btnArchive" title="View all weeks">📚 All Weeks</button>
-  <button id="btnArt" type="button">✦ Add art</button>
-  <button id="btnExport" class="primary">⬇ Export</button>
-  <button id="btnExportCsv">📊 CSV</button>
-  <label class="btn">⬆ Import<input id="btnImport" type="file" accept="application/json" hidden/></label>
-  <button id="btnPrint">🖨 Print</button>
-  <button id="btnClear">⚠ Clear</button>
+  <div class="toolbar-header">
+    <h1>🌸 Chibi Kawaii Planner</h1>
+    <span id="activeWeekBadge" class="active-badge">📌 Live Week</span>
+    <button id="btnMore" type="button" class="btn-more">⚙️ More</button>
+  </div>
+  <div class="toolbar-actions">
+    <button id="btnNewWeek" class="primary" title="Create a new week document">📅 New Week</button>
+    <button id="btnArchive" title="View all weeks">📚 All Weeks</button>
+    <button id="btnArt" type="button">✦ Add art</button>
+  </div>
+  <div id="toolsDrawer" class="tools-drawer">
+    <div class="drawer-group">
+      <button id="btnExport" class="primary">⬇ Export</button>
+      <button id="btnExportCsv">📊 CSV</button>
+      <label class="btn">⬆ Import<input id="btnImport" type="file" accept="application/json" hidden/></label>
+      <button id="btnPrint">🖨 Print</button>
+      <button id="btnClear" class="danger">⚠ Clear</button>
+    </div>
+    <div class="drawer-meta">
+      <span id="versionTag" class="version-badge">🏷️ v2.3.0</span>
+      <span class="saved" id="savedTag">Auto-saves</span>
+      <span class="saved" id="backupTag"></span>
+    </div>
+  </div>
 </div>
 
 <div id="artMenu"></div>
@@ -154,7 +173,7 @@ main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);bo
 <div class="cover-inner">
 <div style="display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
   <span class="kicker">✦ Chibi Kawaii Planner ✦</span>
-  <span style="display:inline-block;padding:3px 12px;border-radius:999px;background:color-mix(in srgb,var(--accent) 25%,var(--card));border:1.5px solid var(--accent);color:var(--fg);font-size:11px;font-weight:800;letter-spacing:.05em;">v2.2.4</span>
+  <span style="display:inline-block;padding:3px 12px;border-radius:999px;background:color-mix(in srgb,var(--accent) 25%,var(--card));border:1.5px solid var(--accent);color:var(--fg);font-size:11px;font-weight:800;letter-spacing:.05em;">v2.3.0</span>
 </div>
 <h1 contenteditable="true" data-key="cover.title">My Cozy Planner</h1>
 <p class="cover-tag" contenteditable="true" data-key="cover.tag">A soft, playful planner with 7 dedicated daily pages — each day has its own pastel color, chibi mascot, mood tracker, water intake, and cozy little moments to capture. Archive each week and start fresh whenever you like.</p>
@@ -605,7 +624,7 @@ main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);bo
 </div>
 
 <script>(function(){
-  var APP_VERSION = '2.2.4';
+  var APP_VERSION = '2.3.0';
   var KEY = 'planner-chibi-kawaii-2026';
   var VERSION_KEY = KEY + ':version';
   var ARCHIVE_KEY = KEY + ':archive';
@@ -1447,6 +1466,22 @@ main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);bo
       var allOff = Object.keys(deco).every(function(x){ return !deco[x]; });
       var master = document.getElementById('decoAllOn');
       if(master){ master.checked = allOn; master.indeterminate = !allOn && !allOff; }
+    });
+  }
+
+  var btnMore = document.getElementById('btnMore');
+  var drawer = document.getElementById('toolsDrawer');
+  if(btnMore && drawer){
+    btnMore.addEventListener('click', function(e){
+      e.stopPropagation();
+      drawer.classList.toggle('open');
+      btnMore.classList.toggle('active', drawer.classList.contains('open'));
+    });
+    document.addEventListener('click', function(e){
+      if(drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== btnMore){
+        drawer.classList.remove('open');
+        btnMore.classList.remove('active');
+      }
     });
   }
 
