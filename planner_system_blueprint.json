@@ -1,0 +1,100 @@
+{
+  "system_name": "ChibiKawaiiPlannerArchitecture",
+  "version": "2.3.0",
+  "author": "Antigravity AI (Google DeepMind Team)",
+  "description": "Complete A-to-Z architecture blueprint for multi-document local storage persistence, 800ms auto-save, responsive UI, export/import, and 1-page-per-day printing engine.",
+  "storage_engine": {
+    "namespace_keys": {
+      "live_state_key": "planner-chibi-kawaii-2026",
+      "version_key": "planner-chibi-kawaii-2026:version",
+      "archive_key": "planner-chibi-kawaii-2026:archive",
+      "active_id_key": "planner-chibi-kawaii-2026:activeId",
+      "deco_key": "planner-chibi-kawaii-2026:deco",
+      "backup_key": "planner-chibi-kawaii-2026:lastBackup",
+      "last_reminder_key": "planner-chibi-kawaii-2026:lastReminder"
+    },
+    "auto_save": {
+      "debounce_ms": 800,
+      "trigger_events": ["input", "change", "click"],
+      "binding_attribute": "data-key",
+      "flush_algorithm": "If activeWeekId is 'current', check hasAnyData(state). If true, auto-generate a named week entry in archive and set activeWeekId to entry.id. If activeWeekId is a specific week ID, update that entry's data in the archive array."
+    },
+    "multi_document": {
+      "id_format": "w_{timestamp}_{random3digits}",
+      "default_name_generator": "Hafta (DD MMM YYYY)",
+      "switching_logic": "Call flush() if saving -> save new activeWeekId -> clearAllFieldsDomOnly() -> loadActiveWeek()"
+    },
+    "schema_migration": {
+      "on_load": "checkVersionAndMigrate() checks storedVersion vs APP_VERSION. If version changed, applies default fallbacks for missing cover titles/tags across live and archive entries and saves storedVersion."
+    }
+  },
+  "data_schema": {
+    "fields": {
+      "cover.title": "Editable cover main title string",
+      "cover.tag": "Editable cover subtitle/tagline string",
+      "{day}.p{1..3}.t": "Priority item text string",
+      "{day}.p{1..3}.d": "Priority checkbox boolean",
+      "{day}.h{6..21}": "Hourly schedule text string",
+      "{day}.notes": "Daily notes textarea string",
+      "{day}.gratitude": "Gratitude box textarea string",
+      "{day}.cozy": "Cozy moment box textarea string",
+      "{day}.mood": "Array of 5 booleans representing selected mood emoji index",
+      "{day}.mood.note": "Mood note text string",
+      "{day}.water": "Array of 8 booleans for water intake glasses",
+      "{day}.hab{1..3}.n": "Habit name text string",
+      "{day}.hab{1..3}.d": "Array of 7 booleans for habit pips (Mon-Sun)"
+    }
+  },
+  "ui_components": {
+    "toolbar": {
+      "desktop_layout": "Single sticky header row at top with primary actions, active badge, and inline tool buttons",
+      "mobile_layout": "2-row responsive header (<750px): Row 1 has Title + Active Badge + '⚙️ More' toggle button. Row 2 has 3 primary action buttons ('📅 New Week', '📚 All Weeks', '✦ Add art').",
+      "expandable_drawer": "Clicking '⚙️ More' toggles #toolsDrawer containing Export JSON, CSV, Import, Print, Clear, and status metadata tags."
+    },
+    "modals": {
+      "archive_modal": "Lists '📚 Your weeks' and '⚙️ Auto-saved' with Open, View, Rename, Delete actions.",
+      "view_modal": "Read-only tabbed modal displaying day-by-day contents with an '📂 Open & Edit this week' action button."
+    },
+    "decorations_menu": {
+      "toggle_menu": "Floating dropdown (#artMenu) with checkboxes for individual decoration layers (sakura, sparkles, paws, clouds, hearts) and 'Enable all' toggle."
+    }
+  },
+  "export_import_engine": {
+    "json_export": {
+      "payload_structure": {
+        "appVersion": "String (e.g. '2.3.0')",
+        "version": 2,
+        "exportedAt": "ISO Date String",
+        "activeWeekId": "String (ID of open week)",
+        "current": "Object containing dumpAll() DOM key-value map",
+        "archive": "Array of all saved week objects"
+      },
+      "filename_format": "chibi-kawaii-planner-YYYY-MM-DD_HH-mm.json"
+    },
+    "json_import": {
+      "validation": "Parses JSON, verifies object structure, restores current & archive localStorage keys, restores activeWeekId, and calls location.reload()."
+    },
+    "csv_export": {
+      "encoding": "UTF-8 with BOM (\\ufeff)",
+      "metadata_header": ["Metadata_Key, Metadata_Value", "Document_Name, [Active Week Name]", "Exported_At, [Timestamp]"],
+      "delimiter": ",",
+      "escaping": "Quotes double-escaped if cell contains quotes, commas, or newlines"
+    }
+  },
+  "print_engine": {
+    "media_query": "@media print",
+    "page_setup": "@page { size: portrait; margin: 8mm; }",
+    "page_break_rules": "Page elements (.page, .daily-page) have page-break-after: always; break-after: page; page-break-inside: avoid; break-inside: avoid; height: 98vh; overflow: hidden;",
+    "color_preservation": "* { print-color-adjust: exact !important; -webkit-print-color-adjust: exact !important; }",
+    "result": "Exactly 1 A4 physical page per daily page (8 pages total per week planner)."
+  },
+  "implementation_checklist": [
+    "1. Add data-key attributes to all editable elements in your HTML skeleton.",
+    "2. Include localStorage persistence functions (loadActiveWeek, flush, queue, archiveWeek).",
+    "3. Bind input/change/click event listeners for auto-save (800ms debounce).",
+    "4. Add toolbar HTML with .toolbar-header, .toolbar-actions, and #toolsDrawer.",
+    "5. Include responsive CSS media query (<750px) for 2-row mobile layout & tools drawer toggle.",
+    "6. Include @media print CSS rules for 1-page-per-day printing.",
+    "7. Bind Export JSON, Export CSV, Import JSON, Print, and Clear buttons to the system handlers."
+  ]
+}
