@@ -36,8 +36,44 @@ main{max-width:1100px;margin:0 auto;padding:16px}.page{background:var(--card);bo
   *{print-color-adjust:exact !important;-webkit-print-color-adjust:exact !important;}
   html,body{background:white !important;margin:0 !important;padding:0 !important;width:100% !important;}
   main{max-width:100% !important;margin:0 !important;padding:0 !important;}
-  .toolbar,.cover-nav,.modal-overlay,#artMenu{display:none !important;}
+  .toolbar,.cover-nav,.modal-overlay,#artMenu,.btn-open-coffee,.back{display:none !important;}
   .page,.daily-page{margin:0 !important;padding:16px 20px !important;border:1.5px solid var(--border) !important;border-radius:12px !important;box-shadow:none !important;min-height:0 !important;height:98vh !important;max-height:98vh !important;page-break-after:always !important;break-after:page !important;page-break-inside:avoid !important;break-inside:avoid !important;box-sizing:border-box !important;overflow:hidden !important;}
+
+  /* ── A4 PRINT WRITE-IN LINES & PLACEHOLDER CLEANUP ── */
+  .priority-item .txt:empty::before,
+  .habit-mini .h-row .h-name:empty::before {
+    content: "" !important;
+  }
+  textarea::placeholder {
+    color: transparent !important;
+    opacity: 0 !important;
+  }
+
+  .priority-item .txt {
+    border-bottom: 1.5px dashed #aaa !important;
+    min-height: 22px !important;
+    display: inline-block !important;
+    width: 100% !important;
+  }
+  .habit-mini .h-row .h-name {
+    border-bottom: 1.5px dashed #aaa !important;
+    min-height: 20px !important;
+    display: inline-block !important;
+  }
+  .hourly .hr .line {
+    border-bottom: 1.5px dashed #aaa !important;
+    min-height: 20px !important;
+  }
+
+  .daily-box textarea {
+    background-image: repeating-linear-gradient(transparent, transparent 23px, #d0d0d0 24px) !important;
+    background-size: 100% 24px !important;
+    line-height: 24px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    min-height: 96px !important;
+    padding: 0 6px !important;
+  }
 }
 @media(max-width:750px){
   main{padding:8px;}
